@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="user"
+            type="app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.Bean" />
+    </data>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp"
+                >
+
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:src="@drawable/nav_logo"
+                    />
+
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="200dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:visibility="gone"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing"
+                    android:src="@drawable/pro"
+                    />
+
+
+                <TableLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:stretchColumns="0" >
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/linear1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/profile"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/textView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="3dp"
+                                android:text="Name"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="#000"
+                                android:textSize="18dp" />
+
+
+                            <EditText
+                                android:id="@+id/my_profile_edt_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="65dp"
+                                android:backgroundTint="#fff"
+                                android:hint="Name"
+                                android:textColor="@color/Black"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/linear2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/profile"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/textView1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="3dp"
+                                android:text="Mobile"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="#000"
+                                android:textSize="18dp" />
+
+
+                            <EditText
+                                android:id="@+id/my_profile_edt_mobile"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="65dp"
+                                android:backgroundTint="#fff"
+                                android:clickable="false"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:hint="Enter your number "
+                                android:inputType="phone|number"
+                                android:maxLength="10"
+                                android:maxLines="1"
+                                android:textColor="@color/Black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </TableRow>
+
+
+
+
+
+
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/linear3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/profile"
+                            android:orientation="horizontal"
+                          >
+
+                            <TextView
+                                android:id="@+id/textView2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="3dp"
+                                android:text="Password"
+
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="#000"
+                                android:textSize="18dp" />
+
+
+                            <EditText
+                                android:id="@+id/my_profile_edt_pass"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="35dp"
+
+                                android:backgroundTint="#fff"
+                                android:hint="Enter your password"
+
+                                android:inputType="textPassword"
+                                android:textColor="@color/Black"
+                                android:textSize="14sp" />
+
+
+                        </LinearLayout>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/linear4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/profile"
+                            android:orientation="horizontal"
+                           >
+
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="3dp"
+                                android:text="Email"
+
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="#000"
+                                android:textSize="18dp" />
+
+
+                            <EditText
+                                android:id="@+id/my_profile_edt_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="60dp"
+                                android:backgroundTint="#fff"
+
+                                android:hint="Email"
+
+                                android:textColor="@color/Black"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+                    </TableRow>
+
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/linear"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/profile"
+                            android:orientation="horizontal"
+                          >
+
+                            <TextView
+                                android:id="@+id/text1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="3dp"
+                                android:text="ShopName"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="#000"
+                                android:textSize="18dp" />
+
+
+                            <EditText
+                                android:id="@+id/text11"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:backgroundTint="#fff"
+                                android:clickable="false"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:hint="ShopName"
+
+                                android:textColor="@color/Black"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+                    </TableRow>
+
+
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/line"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/profile"
+                            android:orientation="horizontal"
+                          >
+
+                            <TextView
+                                android:id="@+id/text2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="35dp"
+                                android:layout_marginTop="3dp"
+                                android:text="DOB"
+
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="#000"
+                                android:textSize="18dp" />
+
+
+                            <EditText
+                                android:id="@+id/text12"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="50dp"
+                                android:backgroundTint="#fff"
+                                android:hint="Enter your DOB"
+                                android:textColor="@color/Black"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/linear5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/profile"
+                            android:orientation="horizontal"
+                           >
+
+                            <TextView
+                                android:id="@+id/textView6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="3dp"
+                                android:text="Billing Address"
+
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="#000"
+                                android:textSize="18dp" />
+
+
+                            <EditText
+                                android:id="@+id/my_profile_edt_billing_add"
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:backgroundTint="#fff"
+                                android:hint="Enter your Billing Address "
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+                    </TableRow>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:drawableLeft="@android:drawable/ic_menu_mylocation"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="Click for your current location"
+                        android:textAlignment="center"
+                        android:textColor="@color/LightGrey"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/my_profile_location_icon_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/addressCb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#FF6347" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:maxLines="1"
+                            android:text="Checked if shipping address is same as billing address"
+                            android:textColor="#000" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/update_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    </LinearLayout>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/linear7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/profile"
+
+
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <TextView
+                                android:id="@+id/textView7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="3dp"
+                                android:text="Shipping Address"
+
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="#000"
+                                android:textSize="18dp" />
+
+                            <EditText
+                                android:id="@+id/my_profile_edt_shipping_add"
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:backgroundTint="#fff"
+                                android:hint="Shipping Address"
+                                android:textColor="@color/Black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/linear6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/profile"
+
+
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="3dp"
+                                android:text="Area"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="#000"
+                                android:textSize="18dp" />
+
+                            <EditText
+                                android:id="@+id/my_profile_edt_landmark"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="40dp"
+                                android:backgroundTint="#fff"
+                                android:hint="Area"
+                                android:maxLines="1"
+                                android:textColor="@color/Black"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/linear8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/profile"
+                            android:orientation="horizontal"
+                           >
+
+                            <TextView
+                                android:id="@+id/textView8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="3dp"
+                                android:text="Pincode"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="#000"
+                                android:textSize="18dp" />
+
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/my_profile_edt_pincode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="40dp"
+                                android:backgroundTint="#fff"
+                                android:hint="Pincode"
+                                android:inputType="phone"
+                                android:maxLength="6"
+                                android:maxLines="1"
+                                android:textColor="@color/Black"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/linear9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/profile"
+                            android:orientation="horizontal"
+                           >
+
+                            <TextView
+                                android:id="@+id/textView9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="3dp"
+                                android:text="GST"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="#000"
+                                android:textSize="18dp" />
+
+
+                            <EditText
+                                android:id="@+id/gst"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="40dp"
+                                android:backgroundTint="#fff"
+                                android:clickable="false"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:hint="Enter any one number"
+                                android:textColor="@color/Black"
+                                android:textSize="14sp" />
+
+
+
+                        </LinearLayout>
+                    </TableRow>
+
+
+
+
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/linear10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical"
+                           >
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center|left"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Upload Registration images"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="@color/Black" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center|left"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    android:id="@+id/uploadreg"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/pro"
+                                  />
+
+
+                                <TextView
+                                    android:textColor="#000"
+                                    android:background="@drawable/rounded"
+                                    android:text="Choose image"
+                                    android:gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    android:id="@+id/choose_image"
+                                    android:layout_width="100dp"
+                                    android:layout_height="25dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </TableRow>
+
+
+
+
+                    <Button
+                        android:id="@+id/updateProfileBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="#FF6347"
+                        android:padding="10dp"
+                        android:text="Update"
+                        android:textColor="#fff"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </TableLayout>
+            </LinearLayout>
+
+
+    </ScrollView>
+
+</layout>

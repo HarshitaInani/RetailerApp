@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_setting"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="app.retailer.krina.shop.com.mp_shopkrina_retailer.SettingActivity">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_back"
+
+        />
+
+
+    <Button
+
+
+        android:textColor="#fff"
+        android:id="@+id/back"
+        android:layout_margin="10dp"
+        android:background="@drawable/total"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        />
+
+    <CheckBox
+
+        android:layout_below="@+id/toolbar"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:id="@+id/checkbox_hindi"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Multiple Language"
+
+        />
+
+
+</RelativeLayout>

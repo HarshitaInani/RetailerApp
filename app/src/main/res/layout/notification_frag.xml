@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_allbrands"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Allbrands">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/ads"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/White">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:id="@+id/toolbar_rl1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true">
+
+                        <ImageView
+                            android:id="@+id/nav_icon_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:layout_centerVertical="true"
+                            android:padding="15dp"
+                            android:src="@drawable/nav_icon" />
+
+                        <ImageView
+                            android:id="@+id/home_icon_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/nav_icon_iv"
+                            android:padding="10dp"
+                            android:src="@drawable/home_icon" />
+
+                        <ImageView
+                            android:id="@+id/Allbrands"
+                            android:layout_width="45dp"
+                            android:layout_height="40dp"
+                            android:layout_centerVertical="true"
+                            android:visibility="gone"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/home_icon_iv"
+                            android:padding="10dp"
+                            android:src="@drawable/starp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/toolbar_rl2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:paddingRight="10dp">
+
+                        <ImageView
+                            android:id="@+id/nav_search_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:visibility="gone"
+                            android:paddingBottom="8dp"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:paddingTop="10dp"
+                            android:src="@drawable/search_icon" />
+
+                        <RelativeLayout
+                            android:id="@+id/nav_notification_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:layout_toRightOf="@+id/nav_search_iv"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:paddingTop="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                android:layout_centerInParent="true"
+                                android:background="@drawable/notification_icon"
+                                android:padding="10dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:maxEms="3"
+                                android:maxLines="1"
+                                android:visibility="gone"
+                                android:text="9"
+                                android:textColor="@color/colorPrimaryDark" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/home_more_iv"
+                            style="@style/Widget.AppCompat.ActionButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/nav_notification_iv"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:paddingTop="10dp"
+                            android:src="@drawable/more_icon" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/category_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/toolbar_rl2"
+                        android:layout_toRightOf="@+id/toolbar_rl1"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="Notification"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </FrameLayout>
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+
+    <!--<app.retailer.krina.shop.com.mp_shopkrina_retailer.indexingscroll.IndexableListView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/ads"
+        android:id="@+id/listview" />-->
+    <!--<android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_below="@+id/ads"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+-->
+    <!-- <com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView
+         android:id="@+id/recyclerview"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" />-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/White"
+        android:layout_marginTop="50dp">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/frag_notification_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/rl1"
+            android:layout_below="@id/ll1"
+            android:padding="10dp" />
+    </RelativeLayout>
+   <!-- <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>-->
+
+</RelativeLayout>
+
+
+

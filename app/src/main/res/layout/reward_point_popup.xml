@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+
+    >
+
+
+    <TextView
+
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="Redeem reward point for payments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        />
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textColor="#000"
+           android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="City : "
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    <Spinner
+        android:layout_weight="3"
+        android:id="@+id/city_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"></Spinner>
+</LinearLayout>
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+        android:textColor="#000"
+
+        android:layout_weight="1"
+        android:gravity="start"
+        android:text="Your wallet points are"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+        <TextView
+            android:textColor="#000"
+
+            android:id="@+id/dppoint"
+            android:layout_weight="1"
+            android:gravity="end"
+
+            android:layout_alignParentRight="true"
+            android:text="0.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textColor="#000"
+
+            android:layout_weight="1"
+            android:gravity="start"
+            android:text="Your Gullak points are"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+        <TextView
+            android:textColor="#000"
+
+            android:id="@+id/gullakpoint"
+            android:layout_weight="1"
+            android:gravity="end"
+
+            android:layout_alignParentRight="true"
+            android:text="0.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textColor="#000"
+
+            android:layout_weight="1"
+            android:gravity="start"
+
+            android:text="Total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:textColor="#000"
+
+            android:id="@+id/redeempop_up_total"
+            android:layout_weight="1"
+            android:gravity="end"
+
+            android:layout_alignParentRight="true"
+            android:text="1896.40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:textColor="#000"
+
+            android:layout_weight="1"
+            android:gravity="start"
+            android:layout_alignParentLeft="true"
+            android:text="Enter wallet point you want to use"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <EditText
+
+            android:inputType="number"
+            android:singleLine="true"
+
+            android:maxLines="1"
+            android:textColor="#000"
+
+            android:id="@+id/pointEt"
+
+            android:layout_weight="1"
+            android:gravity="end"
+
+            android:text="0"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:textColor="#000"
+
+            android:layout_weight="1"
+            android:gravity="start"
+            android:layout_alignParentLeft="true"
+            android:text="Enter Gullak point you want to use"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <EditText
+
+
+            android:singleLine="true"
+
+            android:maxLines="1"
+            android:textColor="#000"
+
+            android:id="@+id/Et1"
+
+            android:layout_weight="1"
+            android:gravity="end"
+
+            android:text="0"
+            android:inputType="numberDecimal|numberSigned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            />
+
+
+    </LinearLayout>
+
+    <Button
+
+        android:background="#d4d4d4"
+        android:textColor="@color/colorPrimary"
+
+        android:id="@+id/redeemBtn"
+        android:layout_gravity="end"
+        android:text="REDEEM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+        <TextView
+            android:textColor="#000"
+            android:layout_weight="1"
+            android:layout_alignParentLeft="true"
+            android:text="Saving Amount is:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/saving_amount"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:layout_alignParentRight="true"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:text="0.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_marginTop="10dp"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+
+    <TextView
+
+
+        android:textColor="#000"
+
+        android:layout_weight="1"
+        android:layout_alignParentLeft="true"
+        android:text="Net Payable Amount is:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+
+        android:textColor="#000"
+
+        android:id="@+id/redeem_pop_up_net_amount"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:layout_alignParentRight="true"
+        android:text="1896.40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+
+    <TextView
+        android:id="@+id/point_info"
+        android:textSize="10sp"
+        android:padding="5dp"
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/point_info1"
+        android:textSize="10sp"
+        android:padding="5dp"
+        android:text="Note 1.0 Gullakpoint = Rs 1.0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+
+    <LinearLayout
+
+        android:layout_gravity="right"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/cancel"
+            android:textStyle="bold"
+            android:textColor="#d4d4d4"
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:padding="10dp"
+            android:text="CANCEL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+           />
+
+        <Button
+            android:textStyle="bold"
+            android:textColor="@color/White"
+            android:background="@drawable/total"
+            android:padding="10dp"
+            android:id="@+id/place_order"
+            android:text="PLACE ORDER"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="10dp"/>
+
+
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>

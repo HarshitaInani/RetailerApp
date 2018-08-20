@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:weightSum="5"
+    android:layout_height="wrap_content">
+    <TableLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/table_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/table_row1"
+
+        >
+
+        <TextView
+            android:id="@+id/t1"
+            android:fontFamily="serif"
+            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:textColor="#000"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="28/07/2018"/>
+        <TextView
+            android:id="@+id/t2"
+            android:textColor="#000"
+            android:fontFamily="serif"
+            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="AmountIn"/>
+        <TextView
+            android:textColor="#000"
+            android:id="@+id/t3"
+            android:fontFamily="serif"
+            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Amountout"/>
+
+        <TextView
+            android:id="@+id/t4"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:text="GullakAmount"
+            android:gravity="center"
+            android:textColor="#000" />
+        <TextView
+            android:textColor="#000"
+            android:id="@+id/t5"
+            android:fontFamily="serif"
+            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_weight="1"
+            android:visibility="gone"
+            android:layout_marginLeft="20dp"
+            android:text="Status"/>
+    </TableRow>
+    </TableLayout>
+</LinearLayout>

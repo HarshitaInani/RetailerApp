@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/rateUs"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Rate Us" />
+        <item
+            android:id="@+id/my_offer"
+            android:icon="@drawable/ic_menu_send"
+            android:title="My Offer" />
+        <item
+            android:id="@+id/rewards_point"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Rewards Point" />
+        <item
+            android:id="@+id/terms_conditions"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Terms and Conditions" />
+    </group>
+
+</menu>

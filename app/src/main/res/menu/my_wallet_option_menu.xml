@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_my_orders"
+        android:orderInCategory="100"
+        android:title="My Orders"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_my_profile"
+        android:orderInCategory="100"
+        android:title="My Profile"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_my_cart"
+        android:orderInCategory="100"
+        android:title="My Cart"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_request_item"
+        android:orderInCategory="100"
+        android:title="Request Brand"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_feedback"
+        android:orderInCategory="100"
+        android:title="Feedback"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_contact_us"
+        android:orderInCategory="100"
+        android:title="Contact us"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="100"
+        android:title="Logout"
+        app:showAsAction="never" />
+</menu>

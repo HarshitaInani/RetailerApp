@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/sk_gif01"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif02"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif03"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif04"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif05"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif06"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif07"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif08"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif09"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif010"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif011"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif012"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif013"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif014"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif015"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif016"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif017"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif018"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif019"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif020"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif021"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif022"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif023"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif024"
+        android:duration="70" />
+    <item
+        android:drawable="@drawable/sk_gif025"
+        android:duration="70" />
+
+
+</animation-list>

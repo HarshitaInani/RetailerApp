@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="user"
+            type="app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.Bean" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/White">
+<LinearLayout
+    android:id="@+id/frag_search_barcode_ler"
+    android:layout_width="match_parent"
+    android:visibility="gone"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+        <EditText
+            android:singleLine="true"
+            android:maxLines="1"
+            android:id="@+id/frag_search_barcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="2"
+            android:background="@color/White"
+            android:hint="Search Item by barcode"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimaryDark" />
+    <TextView
+        android:textColor="#000"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rectangle_green"
+        android:gravity="center"
+        android:text="   Search  "
+        android:id="@+id/search_barcode"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp" />
+</LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="2dp"
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/frag_search_barcode_ler"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+            <EditText
+                android:singleLine="true"
+                android:maxLines="1"
+                android:id="@+id/frag_search_edt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="2"
+                android:background="@color/White"
+                android:hint="Search Item"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <ProgressBar
+                android:id="@+id/search_frag_search_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+
+        <ImageView
+
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:id="@+id/line1"
+            android:layout_below="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#D3D3D3"/>
+
+
+        <RelativeLayout
+            android:id="@+id/rl1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/total_bg"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/frag_search_total_item_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/total"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/White"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/frag_search_bag_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/frag_search_total_item_tv"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"
+                android:src="@drawable/bag_icon" />
+
+
+            <TextView
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+
+                android:background="@drawable/total"
+
+                android:id="@+id/frag_search_total_dp_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="DP: in UI"
+                android:textColor="@color/White"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:id="@+id/frag_search_total_amount_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="Total: "
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/frag_search_continue_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="15dp"
+                android:src="@drawable/continue_icon" />
+        </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/ler1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_above="@+id/rl1"
+            android:background="@color/colorPrimary">
+            <TextView
+                android:id="@+id/show_popup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/White"
+                android:textSize="16sp"
+
+                />
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="3dp"
+            android:id="@+id/frag_search_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/line1"
+            android:layout_above="@id/ler1"
+       />
+    </RelativeLayout>
+</layout>

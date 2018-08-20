@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_request_service"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="app.retailer.krina.shop.com.mp_shopkrina_retailer.RequestServiceActivity">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_back"
+
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <CheckBox
+            android:layout_margin="5dp"
+            android:id="@+id/panCb"
+            android:text="PAN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:layout_margin="5dp"
+            android:id="@+id/tinCb"
+            android:text="TIN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/itrCb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="ITR" />
+
+        <CheckBox
+            android:id="@+id/fssaciCb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="FSSAI" />
+
+
+    </LinearLayout>
+
+
+    <Button
+
+
+        android:textColor="#fff"
+        android:id="@+id/submit"
+        android:layout_margin="10dp"
+        android:background="@drawable/total"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        />
+
+
+</RelativeLayout>

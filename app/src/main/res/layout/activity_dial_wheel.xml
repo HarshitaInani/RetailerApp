@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".dial.DialWheelActivity"
+    android:background="@drawable/blue_back">
+
+
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Lucky Dial"
+            android:textColor="@color/Blue"
+            android:textSize="25sp"
+            android:layout_margin="20dp"
+            android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="Play and win free Dream Point"
+        android:textColor="@color/Blue"
+        android:textSize="20sp"
+        android:layout_margin="55dp"
+        android:textStyle="bold" />
+
+    <app.retailer.krina.shop.com.mp_shopkrina_retailer.dial.library.LuckyWheelView
+        android:layout_centerInParent="true"
+        app:lkwBackgroundColor="@color/White"
+        app:lkwTextColor="#000000"
+        app:lkwCenterImage="@drawable/wheel2"
+        app:lkwCursor="@drawable/stop_point"
+        android:id="@+id/luckyWheel"
+        android:layout_width="300dp"
+        android:layout_height="280dp"
+       />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="25dp"
+        >
+
+    <Button
+        android:id="@+id/play"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:text="Play"
+        android:textStyle="bold"
+        android:background="#00b200"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:layout_margin="10dp"
+        />
+
+
+
+        <Button
+            android:textAllCaps="false"
+            android:id="@+id/skip"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:text="Skip"
+            android:textStyle="bold"
+            android:background="#cc0000"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</RelativeLayout>
