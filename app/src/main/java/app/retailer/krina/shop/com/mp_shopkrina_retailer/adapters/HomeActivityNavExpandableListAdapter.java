@@ -44,7 +44,8 @@ public class HomeActivityNavExpandableListAdapter extends BaseExpandableListAdap
     }
 
     @Override
-    public int getGroupCount() {
+    public int getGroupCount()
+    {
         int i = mListDataHeader.size();
         Log.d("GROUPCOUNT", String.valueOf(i));
         return this.mListDataHeader.size();
@@ -57,12 +58,15 @@ public class HomeActivityNavExpandableListAdapter extends BaseExpandableListAdap
         childCount = this.mListDataChild.get(this.mListDataHeader.get(groupPosition))
                 .size();
 //        }
+        Log.d("childCount", String.valueOf(childCount));
         return childCount;
     }
 
     @Override
     public Object getGroup(int groupPosition) {
+        Log.d("groupPosition", String.valueOf(groupPosition));
         return this.mListDataHeader.get(groupPosition);
+
     }
 
     @Override
@@ -71,6 +75,7 @@ public class HomeActivityNavExpandableListAdapter extends BaseExpandableListAdap
                 .get(childPosition).toString());
         return this.mListDataChild.get(this.mListDataHeader.get(groupPosition))
                 .get(childPosition);
+
     }
 
     @Override
@@ -111,15 +116,20 @@ public class HomeActivityNavExpandableListAdapter extends BaseExpandableListAdap
         //  imageView.setImageResource(R.drawable.nav_icon);
 
 
-        if(headerTitle.getBaseCategoryName().equals("Groceries")){
+        if(headerTitle.getBaseCategoryName().equals("Groceries"))
+        {
             imageView.setImageResource(R.drawable.groceries);
 
-        }else if(headerTitle.getBaseCategoryName().equals("Homecare"))
+        }
+        else if(headerTitle.getBaseCategoryName().equals("Homecare"))
         {
 
             imageView.setImageResource(R.drawable.homecare);
 
-        }else  if(headerTitle.getBaseCategoryName().equals("Personal care")){
+        }
+        else  if(headerTitle.getBaseCategoryName().equals("Personal care"))
+        {
+
             imageView.setImageResource(R.drawable.personalcare);
 
         }
@@ -131,10 +141,13 @@ public class HomeActivityNavExpandableListAdapter extends BaseExpandableListAdap
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         final CategoryBean childObject = (CategoryBean) getChild(groupPosition, childPosition);
 
-        if (convertView == null) {
+        if (convertView == null)
+        {
+
             LayoutInflater infalInflater = (LayoutInflater) this.mContext
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.home_activity_nav_item_sub_menu, null);
+
         }
         /*LinearLayout mSubMenuRow = (LinearLayout) convertView.findViewById(R.id.child_ll);
         mSubMenuRow.setOnClickListener(new_added View.OnClickListener() {
@@ -147,11 +160,14 @@ public class HomeActivityNavExpandableListAdapter extends BaseExpandableListAdap
                 .findViewById(R.id.submenu);
         txtListChild.setText(childObject.getCategoryName());
         ImageView mImageView = (ImageView) convertView.findViewById(R.id.home_activity_nav_menu_sub_item_imageView);
-        if (!TextUtils.isNullOrEmpty(childObject.getLogoUrl()))
+        if (!TextUtils.isNullOrEmpty(childObject.getLogoUrl())) {
             Picasso.with(mContext).load(childObject.getLogoUrl()).resize(70, 70).into(mImageView);
-        else
+        }
+        else {
+
             Picasso.with(mContext).load(Constant.BASE_URL_Images + "images/catimages/" + childObject.getCategoryid() + ".png").resize(50, 50).into(mImageView);
 
+        }
         return convertView;
     }
 

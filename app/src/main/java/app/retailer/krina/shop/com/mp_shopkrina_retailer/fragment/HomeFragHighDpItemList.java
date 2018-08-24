@@ -167,7 +167,7 @@ public class HomeFragHighDpItemList extends Fragment {
 
         }
 
-        mItemListAdapter = new HomeFragItemListAdapter(getActivity(), mPopularBrandBeenArrayList, rowitemImageWidth, rowitemImageHeight, tvTotalItemPrice, tvTotalItemQty, tvTotalDp,show_popup);
+        mItemListAdapter = new HomeFragItemListAdapter(getActivity(), mPopularBrandBeenArrayList, rowitemImageWidth, rowitemImageHeight, tvTotalItemPrice, tvTotalItemQty, tvTotalDp,show_popup,getFragmentManager());
         mItemListRecyclerView.setAdapter(mItemListAdapter);
 
 

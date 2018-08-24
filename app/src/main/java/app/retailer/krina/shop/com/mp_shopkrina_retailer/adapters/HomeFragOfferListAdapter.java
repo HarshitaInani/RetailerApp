@@ -3,12 +3,14 @@ package app.retailer.krina.shop.com.mp_shopkrina_retailer.adapters;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -35,7 +37,6 @@ import org.json.JSONObject;
 import java.lang.reflect.Type;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.Constant;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.HomeActivity;
@@ -45,6 +46,7 @@ import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.CartItemInfo;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.OfferList;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.ItemList;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.customClasses.Utility;
+import app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment.SubcatimageFragment;
 
 
 /**
@@ -66,7 +68,8 @@ public class HomeFragOfferListAdapter extends RecyclerView.Adapter<HomeFragOffer
     int  count=0;
     String language;
     private TextView show_popup;
-    public HomeFragOfferListAdapter(Context context, ArrayList<ItemList> itemListArrayList, int ivWidth, int ivHeight, TextView tvTotalItemPrice, TextView tvTotalItemQty , TextView tvTotalDp, TextView show_popup) {
+    FragmentManager fragmentManager;
+    public HomeFragOfferListAdapter(Context context, ArrayList<ItemList> itemListArrayList, int ivWidth, int ivHeight, TextView tvTotalItemPrice, TextView tvTotalItemQty, TextView tvTotalDp, TextView show_popup, FragmentManager fragmentManager) {
 
         this.itemListArrayList = itemListArrayList;
         this.context = context;
@@ -76,7 +79,7 @@ public class HomeFragOfferListAdapter extends RecyclerView.Adapter<HomeFragOffer
         this.tvTotalItemPrice = tvTotalItemPrice;
         this.tvTotalDp= tvTotalDp;
         this.show_popup= show_popup;
-
+        this.fragmentManager=fragmentManager;
         this.tvTotalItemQty = tvTotalItemQty;
     }
 
@@ -477,8 +480,19 @@ public class HomeFragOfferListAdapter extends RecyclerView.Adapter<HomeFragOffer
             context.startActivity(new Intent(context, HomeActivity.class));
             System.out.println("Run:::" + e.toString());
         }
-
-
+//imageview Action
+        viewHolder.ivItemImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = Fragment.instantiate(context, SubcatimageFragment.class.getName());
+                Bundle bundle = new Bundle();
+                bundle.putString("name", itemListArrayList.get(i).getItemname());
+                System.out.println("name123"+itemListArrayList.get(i).getItemname());
+                bundle.putString("image",Constant.BASE_URL_Images1 + itemListArrayList.get(i).getItemNumber() + ".jpg");
+                fragment.setArguments(bundle);
+                fragmentManager.beginTransaction().addToBackStack(fragmentManager.getFragments().toString()).replace(R.id.content_frame, fragment, "HomeFragItemList").commit();
+            }
+        });
 
 
 

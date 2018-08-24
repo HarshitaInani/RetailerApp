@@ -153,43 +153,7 @@
             android:layout_toRightOf="@+id/frag_home_top_iv"
             android:layout_toEndOf="@+id/frag_home_top_iv"
             />
-                <LinearLayout
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/orange_category"
-                        android:layout_marginLeft="5dp"
-                        />
 
-                    <TextView
-                        android:layout_below="@id/rl1"
-                        android:id="@+id/shop_textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="left"
-                        android:text="Shop By Company"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/shop_card_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="vertical"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/frag_home_top_iv"
-                    android:layout_toEndOf="@+id/frag_home_top_iv"
-                    />
                 <LinearLayout
                     android:visibility="gone"
                     android:id="@+id/grocery"
@@ -411,7 +375,43 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
 
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/orange_category"
+                        android:layout_marginLeft="5dp"
+                        />
 
+                    <TextView
+                        android:layout_below="@id/rl1"
+                        android:id="@+id/shop_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:text="Shop By Brands"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/shop_card_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/frag_home_top_iv"
+                    android:layout_toEndOf="@+id/frag_home_top_iv"
+                    />
 
 
 

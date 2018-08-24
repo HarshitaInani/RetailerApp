@@ -41,7 +41,7 @@ import app.retailer.krina.shop.com.mp_shopkrina_retailer.adapters.NotificationFr
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.NotificationListBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.RetailerBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.customClasses.Utility;
-import app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment.NotificationFrag;
+//import app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment.NotificationFrag;
 
 /**
  * Created by User on 17-08-2018.

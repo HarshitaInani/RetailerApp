@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.Constant;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.R;
-import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.shopbycompanybean;
+import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.shopbybrandbean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment.HomeFragNewlyAddedBrandList;
 
 /**
@@ -29,7 +29,7 @@ import app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment.HomeFragNewlyA
 
 public class ShopbycompanyAdapter extends RecyclerView.Adapter<ShopbycompanyAdapter.ViewHolder> {
 
-    private  ArrayList<shopbycompanybean> mshopcompany;
+    ArrayList<shopbybrandbean> mshopbrand;
     private Context context;
     int ivHeight;
     int ivWidth;
@@ -37,17 +37,19 @@ public class ShopbycompanyAdapter extends RecyclerView.Adapter<ShopbycompanyAdap
 
 
 
-    public ShopbycompanyAdapter(Context context, int rowIMageHeight, int rowIMageWidth, FragmentManager fragmentManager, ArrayList<shopbycompanybean> mshopcompany) {
+    public ShopbycompanyAdapter(Context context, int rowIMageHeight, int rowIMageWidth, FragmentManager fragmentManager, ArrayList<shopbybrandbean> mshopbrand) {
 
         this.context = context;
         this.ivHeight = rowIMageHeight;
         this.ivWidth = rowIMageWidth;
         this.fragmentManager = fragmentManager;
-        this.mshopcompany=mshopcompany;
+        this.mshopbrand=mshopbrand;
 
 
 
     }
+
+
 
     @Override
     public ShopbycompanyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -58,12 +60,12 @@ public class ShopbycompanyAdapter extends RecyclerView.Adapter<ShopbycompanyAdap
 
     @Override
     public void onBindViewHolder(ShopbycompanyAdapter.ViewHolder holder,  final int i) {
-        holder.tv_android.setText(mshopcompany.get(i).getSubcategoryName());
-        if (!TextUtils.isNullOrEmpty(mshopcompany.get(i).getLogoUrl())) {
-            Picasso.with(context).load(mshopcompany.get(i).getLogoUrl()).resize(ivHeight, ivWidth).into(holder.img_android);
+        holder.tv_android.setText(mshopbrand.get(i).getSubcategoryName());
+        if (!TextUtils.isNullOrEmpty(mshopbrand.get(i).getLogoUrl())) {
+            Picasso.with(context).load(mshopbrand.get(i).getLogoUrl()).resize(ivHeight, ivWidth).into(holder.img_android);
         }
         else {
-            Picasso.with(context).load(Constant.BASE_URL_Images + "images/catimages/" + mshopcompany.get(i).getCategoryid() + ".png").resize(ivWidth, ivHeight).into(holder.img_android);
+            Picasso.with(context).load(Constant.BASE_URL_Images + "images/catimages/" + mshopbrand.get(i).getCategoryid() + ".png").resize(ivWidth, ivHeight).into(holder.img_android);
         }
 
     holder.mRowRl.setOnClickListener(new View.OnClickListener() {
@@ -72,10 +74,10 @@ public class ShopbycompanyAdapter extends RecyclerView.Adapter<ShopbycompanyAdap
             Fragment fragment = Fragment.instantiate(context, HomeFragNewlyAddedBrandList.class.getName());
             Bundle args = new Bundle();
             //args.putInt("baseCategoryId", Integer.parseInt(mPopularBrandBeenArrayList.get(i - mBaseCatSubCatBean.getmBaseCatBeanArrayList().size()).getCategoryid()));
-            args.putInt("selectedCategoryId", Integer.parseInt(mshopcompany.get(i).getCategoryid()));
-            args.putInt("selectedSubCatId", Integer.parseInt(mshopcompany.get(i).getSubCategoryId()));
-            /*args.putInt("selectedWarId", Integer.parseInt(mshopcompany.getWarehouseid()));*/
-            args.putString("SubcategoryName",mshopcompany.get(i).getSubcategoryName());
+            args.putInt("selectedCategoryId", Integer.parseInt(mshopbrand.get(i).getCategoryid()));
+            args.putInt("selectedSubCatId", Integer.parseInt(mshopbrand.get(i).getSubCategoryId()));
+            /*args.putInt("selectedWarId", Integer.parseInt(mshopbrand.getWarehouseid()));*/
+            args.putString("SubcategoryName",mshopbrand.get(i).getSubcategoryName());
 
             fragment.setArguments(args);
             fragmentManager.beginTransaction().addToBackStack(fragmentManager.getFragments().toString()).replace(R.id.content_frame, fragment, "HomeFragItemList").commit();

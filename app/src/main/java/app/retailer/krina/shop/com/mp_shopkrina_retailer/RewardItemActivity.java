@@ -545,7 +545,9 @@ public class RewardItemActivity extends AppCompatActivity {
                     Toast.makeText(RewardItemActivity.this, "Please try again!", Toast.LENGTH_SHORT).show();
 
 
-                } else {
+                }
+
+                else {
 
                     if (mDialog.isShowing()) {
                         animation.stop();

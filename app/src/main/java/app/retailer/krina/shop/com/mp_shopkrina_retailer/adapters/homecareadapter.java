@@ -59,9 +59,11 @@ public class homecareadapter extends RecyclerView.Adapter<homecareadapter.ViewHo
         // System.out.println("Logo Url1::"+Constant.BASE_URL_Images + "images/catimages/" + mCategoryBeanArrayList.get(i).getCategoryid() + ".png");
         if (!TextUtils.isNullOrEmpty(mCategoryBeanArrayList.get(i).getLogoUrl()))
 
-            Picasso.with(context).load(mCategoryBeanArrayList.get(i).getLogoUrl()).resize(ivWidth, ivHeight).into(viewHolder.img_android);
+        Picasso.with(context).load(mCategoryBeanArrayList.get(i).getLogoUrl()).resize(ivWidth, ivHeight).into(viewHolder.img_android);
+       // Picasso.with(context).load(R.drawable.aata_and_cereals ).resize(ivWidth, ivHeight).into(viewHolder.img_android);
         else
             Picasso.with(context).load(Constant.BASE_URL_Images + "images/catimages/" + mCategoryBeanArrayList.get(i).getCategoryid() + ".png").resize(ivWidth, ivHeight).into(viewHolder.img_android);
+
         viewHolder.mRowRl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

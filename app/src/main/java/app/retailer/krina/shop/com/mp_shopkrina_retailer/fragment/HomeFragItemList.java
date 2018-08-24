@@ -168,7 +168,7 @@ public class HomeFragItemList extends Fragment implements ItemListSubSubCatAdapt
             }
         });
 
-        mItemListAdapter = new ItemListAdapter(getActivity(), mItemListArrayList, 77, 77, tvTotalItemPrice, tvTotalItemQty , tvTotalDp, show_popup,mItemListAllValue);
+        mItemListAdapter = new ItemListAdapter(getContext(), mItemListArrayList, 77, 77, tvTotalItemPrice, tvTotalItemQty , tvTotalDp, show_popup,mItemListAllValue, getFragmentManager());
         mItemListRecyclerView.setAdapter(mItemListAdapter);
 
         viewPager =(ViewPager)view.findViewById(R.id.pager);
@@ -376,15 +376,15 @@ public class HomeFragItemList extends Fragment implements ItemListSubSubCatAdapt
 
                 mItemListRecyclerView.setVisibility(View.GONE);
                 mSubSubCatRecyclerView.setVisibility(View.GONE);
-                itemListSelectdSubSubCatTv.setVisibility(View.GONE);
+          //  itemListSelectdSubSubCatTv.setVisibility(View.GONE);
 
             } else {
                 mItemListRecyclerView.setVisibility(View.VISIBLE);
                 mSubSubCatRecyclerView.setVisibility(View.VISIBLE);
                 mSubCatRecyclerView.setVisibility(View.VISIBLE);
-                itemListSelectdSubSubCatTv.setVisibility(View.VISIBLE);
+             // itemListSelectdSubSubCatTv.setVisibility(View.VISIBLE);
                 System.out.println("mSubSubCatItemListBeanArrayList::"+mSubSubCatItemListBeanArrayList);
-                ItemListSubSubCatAdapter itemListSubSubCatAdapter = new ItemListSubSubCatAdapter(getActivity(), mSubSubCatItemListBeanArrayList, itemListSelectdSubSubCatTv, HomeFragItemList.this);
+                ItemListSubSubCatAdapter itemListSubSubCatAdapter = new ItemListSubSubCatAdapter(getActivity(), mSubSubCatItemListBeanArrayList,/* itemListSelectdSubSubCatTv,*/ HomeFragItemList.this);
                 mSubSubCatRecyclerView.setAdapter(itemListSubSubCatAdapter);
 
 
@@ -772,7 +772,7 @@ public class HomeFragItemList extends Fragment implements ItemListSubSubCatAdapt
 
                     mItemListRecyclerView.setVisibility(View.GONE);
                     mSubSubCatRecyclerView.setVisibility(View.GONE);
-                    itemListSelectdSubSubCatTv.setVisibility(View.GONE);
+                 //   itemListSelectdSubSubCatTv.setVisibility(View.GONE);
                     mSubCatRecyclerView.setVisibility(View.GONE);
                     Toast.makeText(getActivity(), "Category not found...", Toast.LENGTH_SHORT).show();
                 }

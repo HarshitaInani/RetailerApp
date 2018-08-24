@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,19 +62,23 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder> 
 
 
         System.out.println("mofferlist2121:::"+mofferlist.get(i).getItemname());
+        Log.d("mofferlist111",mofferlist.get(i).getOfferLogoUrl());
          //   mPopularBrandBeenArrayList
 
 
             viewHolder.tv_android.setText(mofferlist.get(i).getItemname());
 
        // System.out.println("Image::"+Constant.BASE_URL_Images1 + "itemimages/" + mAllTopAddedItemArrayList.get(i).getItemNumber() + ".jpg");
+
             if (!TextUtils.isNullOrEmpty(mofferlist.get(i).getOfferLogoUrl()))
 
                 Picasso.with(context).load( mofferlist.get(i).getOfferLogoUrl() ).resize(ivWidth, ivHeight).into(viewHolder.img_android);
 
-            else
-               // Picasso.with(context).load(Constant.BASE_URL_Images1 + mofferlist.get(i).getNumber() + ".jpg").resize(ivWidth, ivHeight).into(viewHolder.img_android);
-                Picasso.with(context).load( mofferlist.get(i).getOfferLogoUrl()).resize(ivWidth, ivHeight).into(viewHolder.img_android);
+            else {
+                Log.d("mofferlist111", mofferlist.get(i).getOfferLogoUrl());
+                Picasso.with(context).load(Constant.BASE_URL_Images1 + mofferlist.get(i).getNumber() + ".jpg").resize(ivWidth, ivHeight).into(viewHolder.img_android);
+                //Picasso.with(context).load( mofferlist.get(i).getOfferLogoUrl()).resize(ivWidth, ivHeight).into(viewHolder.img_android);
+            }
      viewHolder.mRowRl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

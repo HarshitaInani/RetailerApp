@@ -1,3 +1,4 @@
+/*
 package app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment;
 
 import android.app.Dialog;
@@ -40,9 +41,11 @@ import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.NotificationListBe
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.RetailerBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.databinding.NotificationFragBinding;
 
+*/
 /**
  * Created by Krishna on 03-01-2017.
- */
+ *//*
+
 
 public class NotificationFrag extends Fragment {
 
@@ -151,8 +154,10 @@ public class NotificationFrag extends Fragment {
             if (mNotificationListArrayList != null && jsonArray.length() > 0) {
                 if (getActivity() != null) {
                     if (!mNotificationListArrayList.isEmpty()) {
-                        mNotificationFragAdapter.notifyDataSetChanged();/* = new_added SearchFragListAdapter(getActivity(), mItemListArrayList, rowitemImageWidth, rowitemImageHeight, tvTotalItemPrice, tvTotalItemQty);
-                        mItemListRecyclerView.setAdapter(mSearchFragAdapter);*/
+                        mNotificationFragAdapter.notifyDataSetChanged();*/
+/* = new_added SearchFragListAdapter(getActivity(), mItemListArrayList, rowitemImageWidth, rowitemImageHeight, tvTotalItemPrice, tvTotalItemQty);
+                        mItemListRecyclerView.setAdapter(mSearchFragAdapter);*//*
+
                     } else {
                         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
                         alertDialogBuilder.setMessage("No Notification available");
@@ -214,4 +219,4 @@ public class NotificationFrag extends Fragment {
 
 
 
-}
+}*/

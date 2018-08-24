@@ -4,7 +4,7 @@ package app.retailer.krina.shop.com.mp_shopkrina_retailer.bean;
  * Created by User on 11-08-2018.
  */
 
-public class shopbycompanybean {
+public class shopbybrandbean {
     String SubCategoryId;
     String CompanyId;
     String Categoryid;
@@ -22,6 +22,8 @@ public class shopbycompanybean {
     String LogoUrl;
     String Deleted;
     String IsActive;
+    String SubsubcategoryName;
+
     public String getSubCategoryId() {
         return SubCategoryId;
     }
@@ -54,17 +56,30 @@ public class shopbycompanybean {
         LogoUrl = logoUrl;
     }
 
+    public String getSubsubcategoryName() {
+        return SubsubcategoryName;
+    }
+
+    public void setSubsubcategoryName(String subsubcategoryName) {
+        SubsubcategoryName = subsubcategoryName;
+    }
 
 
-    public shopbycompanybean(String Categoryid, String subCategoryId, String SubsubcategoryName, String LogoUrl) {
+
+
+    public shopbybrandbean(String SubcategoryName, String Categoryid, String subCategoryId, String SubsubcategoryName, String LogoUrl) {
        this. SubCategoryId = subCategoryId;
-        this. SubcategoryName = SubsubcategoryName;
+        this. SubsubcategoryName = SubsubcategoryName;
         this. LogoUrl = LogoUrl;
         this. Categoryid=Categoryid;
+        this.SubcategoryName=SubcategoryName;
 
     }
 @Override
     public  String toString() {
+
      return    SubcategoryName;
+
     }
+
 }

@@ -8,6 +8,9 @@ import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -41,6 +44,7 @@ import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.CartItemBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.CartItemInfo;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.ItemList;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.customClasses.Utility;
+import app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment.SubcatimageFragment;
 
 /**
  * Created by Krishna on 03-01-2017.
@@ -62,7 +66,8 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
     String language;
     private TextView show_popup;
     int count = 0;
-    public ItemListAdapter(Context context, ArrayList<ItemList> itemListArrayList, int ivWidth, int ivHeight, TextView tvTotalItemPrice, TextView tvTotalItemQty, TextView tvTotalDp, TextView show_popup, ArrayList<ItemList> itemListAllvalue) {
+    FragmentManager fragmentManager;
+    public ItemListAdapter(Context context, ArrayList<ItemList> itemListArrayList, int ivWidth, int ivHeight, TextView tvTotalItemPrice, TextView tvTotalItemQty, TextView tvTotalDp, TextView show_popup, ArrayList<ItemList> itemListAllvalue, FragmentManager fragmentManager) {
         this.itemListArrayList = itemListArrayList;
         this.context = context;
         this.ivWidth = ivWidth;
@@ -72,6 +77,7 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
         this.tvTotalDp = tvTotalDp;
         this.show_popup = show_popup;
         this.tvTotalItemQty = tvTotalItemQty;
+        this.fragmentManager=fragmentManager;
     }
 
     @Override
@@ -118,9 +124,13 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
                 moqPojoArrayList.add(new ItemList(ItemId, UnitId, Categoryid, SubCategoryId, SubsubCategoryid, itemname, UnitName, PurchaseUnitName, price, SellingUnitName, SellingSku, UnitPrice, VATTax, LogoUrl, MinOrderQty, Discount, TotalTaxPercentage, HindiName, DpPoint, PromoPoint, MarginPoint, warehouseId, companyId, ItemNumber,isoffer));
 
                 // System.out.println("moqPojoArrayList12:::"+moqPojoArrayList);
-            } else {
-                //   System.out.println("Moq5555:::"+itemListArrayList.get(i).getMinOrderQty());
             }
+
+            else
+                {
+                //   System.out.println("Moq5555:::"+itemListArrayList.get(i).getMinOrderQty());
+
+                }
         }
         //  arrayAdapterItemName = new_added ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, moq);
 
@@ -177,7 +187,19 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
                 // String item = arg0.getItemAtPosition(ii).toString();
                 viewHolder.tvMoqPrice.setText(moqPojoArrayList.get(0).getMinOrderQty());
                 viewHolder.tvItemName.setText(itemListArrayList.get(i).getItemname());
+                viewHolder. ivItemImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
+                        Fragment fragment = Fragment.instantiate(context, SubcatimageFragment.class.getName());
+                        Bundle bundle = new Bundle();
+                        bundle.putString("name", itemListArrayList.get(i).getItemname());
+                        System.out.println("name123"+itemListArrayList.get(i).getItemname());
+                        bundle.putString("image",Constant.BASE_URL_Images1 + itemListArrayList.get(i).getItemNumber() + ".jpg");
+                        fragment.setArguments(bundle);
+                        fragmentManager.beginTransaction().addToBackStack(fragmentManager.getFragments().toString()).replace(R.id.content_frame, fragment, "HomeFragItemList").commit();
+                    }
+                });
 
                 Typeface tf = Typeface.createFromAsset(context.getAssets(), "fonts/krdv011.ttf");
 
@@ -267,13 +289,15 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
                    // System.out.println("ivWidth:"+ivWidth);
                     //System.out.println("ivHeight:"+ivHeight);
                   //  System.out.println("ItemImages:::"+Constant.BASE_URL_Images1 + "itemimages/" + itemListArrayList.get(i).getItemNumber() + ".jpg");
-                    Picasso.with(context).load(Constant.BASE_URL_Images1 + itemListArrayList.get(i).getItemNumber() + ".jpg").resize(77, 77).into(viewHolder.ivItemImage);
+                    Picasso.with(context).load(Constant.BASE_URL_Images1 + itemListArrayList.get(i).getItemNumber() + ".jpg").resize(77, 77).into(viewHolder. ivItemImage);
                 //viewHolder.tvMoqMrp.setText("MOQ: " + moqPojoArrayList.get(ii).getMinOrderQty() + " | MRP: " + new DecimalFormat("##.##").format ((Double.parseDouble(moqPojoArrayList.get(ii).getPrice()))));
 
                 viewHolder.tvSelectUnitPrice.setText("| MRP: " + new DecimalFormat("##.##").format((Double.parseDouble(moqPojoArrayList.get(0).getPrice()))));
 
                 String text = "<font color=#FF4500>&#8377; " + new DecimalFormat("##.##").format(Double.parseDouble(moqPojoArrayList.get(0).getUnitPrice())) + "</font>" + " | Margins: " + (new DecimalFormat("##.##").format((((Double.parseDouble(moqPojoArrayList.get(0).getPrice()) - Double.parseDouble(moqPojoArrayList.get(0).getUnitPrice())) / Double.parseDouble(moqPojoArrayList.get(0).getPrice())) * 100))) + "%";
+
                 viewHolder.tvRateMargins.setText(Html.fromHtml(text));
+
 
                 ComplexPreferences mCartItemArraylistPref = ComplexPreferences.getComplexPreferences(context, Constant.CART_ITEM_ARRAYLIST_PREF, context.MODE_PRIVATE);
                 CartItemBean mCartItemBean = mCartItemArraylistPref.getObject(Constant.CART_ITEM_ARRAYLIST_PREF_OBJ, CartItemBean.class);
@@ -485,6 +509,8 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
                 TextView item_name = (TextView) dialogLayout.findViewById(R.id.item_name);
                 item_name.setText(itemListArrayList.get(i).getItemname());
                 ListView mMoqPriceList = (ListView) dialogLayout.findViewById(R.id.listview_moq_price);
+                String text1 = "<font color=#FF4500>&#8377; " +  "  Margins: " + (new DecimalFormat("##.##").format((((Double.parseDouble(moqPojoArrayList.get(0).getPrice()) - Double.parseDouble(moqPojoArrayList.get(0).getUnitPrice())) / Double.parseDouble(moqPojoArrayList.get(0).getPrice())) * 100))) + "%";
+                Html.fromHtml(text1);
                 final MyAdapter adapter = new MyAdapter(context, moqPojoArrayList);
                 mMoqPriceList.setAdapter(adapter);
 
@@ -593,18 +619,27 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
                                                     viewHolder.tvselectedItemQuantity.setText("" + itemQuantity);
                                                 String price = "<font color=#FF4500>&#8377; " + new DecimalFormat("##.##").format((itemQuantity * Double.parseDouble(moqPojoArrayList.get(ii).getUnitPrice())));
                                                 viewHolder.tvSelectedItemPrice.setText(Html.fromHtml(price));
-                                                if (((HomeActivity) context).getCartItem().getTotalPrice() < 2000) {
+                                                if (((HomeActivity) context).getCartItem().getTotalPrice() < 2000)
+                                                {
                                                     deliveryCharges = 10;
-                                                } else {
+                                                }
+
+                                                else
+
+                                                    {
+
                                                     deliveryCharges = 0;
                                                 }
+
                                                 ShowPopup((int) ((HomeActivity) context).getCartItem().getTotalPrice());
                                                 tvTotalItemPrice.setText("Total: " + new DecimalFormat("##.##").format(((HomeActivity) context).getCartItem().getTotalPrice()));
                                                 tvTotalItemQty.setText("" + (int) ((HomeActivity) context).getCartItem().getTotalQuantity());
-                                            }else
+                                            }
+                                            else
                                             {
                                                 //gole changed this
                                                 isItemFound = false;
+
                                             }
                                             break;
                                         } else {
@@ -857,6 +892,7 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
             ivSpecialOfer = (ImageView) view.findViewById(R.id.special_offer);
             tvSelectUnitPrice = (TextView) view.findViewById(R.id.unit_price);
             ivOfferImage = (ImageView) view.findViewById(R.id.offer_image);
+
         }
     }
     public class GetCallItemOffer extends AsyncTask<String, Void, JSONObject> {
@@ -946,5 +982,6 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
 
         }
     }
+
 
 }

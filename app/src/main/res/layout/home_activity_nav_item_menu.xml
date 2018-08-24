@@ -3,8 +3,9 @@
     android:id="@+id/item_ll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:gravity="center">
+
     <ImageView
         android:id="@+id/img"
         style="@style/Widget.AppCompat.ActionButton"
@@ -17,6 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:text="helo"
         android:textColor="#000000"
         android:textSize="18sp" />
+
+
 </LinearLayout>

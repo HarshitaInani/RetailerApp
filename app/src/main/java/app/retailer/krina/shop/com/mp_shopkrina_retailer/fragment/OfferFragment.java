@@ -193,7 +193,7 @@ public class OfferFragment extends Fragment {
         }
         //new MostSelledItemAdapter(getActivity(), mBaseCatSubCatBean, rowIMageHeight, rowIMageWidth, getFragmentManager(), mRetailerBean, mSelledItemArrayList == null ? new ArrayList<SelledItemPojo>() : mSelledItemArrayList);
       //  (Context context, BaseCatSubCatBean mBaseCatSubCatBean, int ivHeight, int ivWidth, FragmentManager fragmentManager, RetailerBean mRetailerBean, ArrayList<OfferList> mofferlist)
-        mItemListAdapter = new HomeFragOfferListAdapter(getActivity(), mPopularBrandBeenArrayList1, rowitemImageWidth, rowitemImageHeight, tvTotalItemPrice, tvTotalItemQty, tvTotalDp,show_popup);
+        mItemListAdapter = new HomeFragOfferListAdapter(getActivity(), mPopularBrandBeenArrayList1, rowitemImageWidth, rowitemImageHeight, tvTotalItemPrice, tvTotalItemQty, tvTotalDp,show_popup,getFragmentManager());
         mItemListRecyclerView.setAdapter(mItemListAdapter);
 
 

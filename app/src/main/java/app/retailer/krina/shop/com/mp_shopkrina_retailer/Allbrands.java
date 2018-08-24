@@ -1,5 +1,6 @@
 package app.retailer.krina.shop.com.mp_shopkrina_retailer;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -66,6 +67,7 @@ ProgressBar progressBar;
         });
 
         ((ImageView) toolbar.findViewById(R.id.home_more_iv)).setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
                 View menuItemView = findViewById(R.id.home_more_iv);

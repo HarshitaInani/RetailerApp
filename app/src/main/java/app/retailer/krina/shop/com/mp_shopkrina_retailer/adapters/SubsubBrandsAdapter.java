@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -38,11 +39,13 @@ import java.util.ArrayList;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.Constant;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.HomeActivity;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.R;
+import app.retailer.krina.shop.com.mp_shopkrina_retailer.SubcatimageAllbrands;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.SubsubBrands;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.CartItemBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.CartItemInfo;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.ItemList;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.customClasses.Utility;
+
 
 /**
  * Created by User on 9/15/2017.
@@ -529,7 +532,17 @@ public class SubsubBrandsAdapter extends RecyclerView.Adapter<SubsubBrandsAdapte
             context.startActivity(new Intent(context, HomeActivity.class));
             System.out.println("Run:::"+e.toString());
         }
-
+        viewHolder.ivItemImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent (context,SubcatimageAllbrands.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("name",itemListArrayList.get(i).getItemname());
+                bundle.putString("image",Constant.BASE_URL_Images1 + itemListArrayList.get(i).getItemNumber() + ".jpg");
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            }
+        });
 
 
         //TextView Click Action

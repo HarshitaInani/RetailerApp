@@ -180,14 +180,13 @@
         <activity android:name=".UnderSelectActivity" />
         <activity android:name=".ShowUploadImageActivity" />
         <activity android:name=".MyGullakActivity" />
-        <activity android:name=".GullakTransactionActivity"></activity>
-        <activity android:name=".NotiFicationActivity"
+        <activity android:name=".GullakTransactionActivity" />
+        <activity android:name=".SubcatimageAllbrands"
+             />
+        <activity
+            android:name=".NotiFicationActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoTitleBar"
-
-            >
-
-        </activity>
+            android:theme="@style/AppThemeNoTitleBar"></activity>
     </application>
 
 </manifest>

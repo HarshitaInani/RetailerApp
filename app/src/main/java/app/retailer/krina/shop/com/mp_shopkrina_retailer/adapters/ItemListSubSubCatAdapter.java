@@ -1,6 +1,7 @@
 package app.retailer.krina.shop.com.mp_shopkrina_retailer.adapters;
 
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.R;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.SubSubCategoriesBean;
+import app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment.HomeFragItemList;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.interfaces.ItemListSubSubCatAdapterInterface;
 
 /**
@@ -20,16 +22,16 @@ import app.retailer.krina.shop.com.mp_shopkrina_retailer.interfaces.ItemListSubS
 public class ItemListSubSubCatAdapter extends RecyclerView.Adapter<ItemListSubSubCatAdapter.ViewHolder> {
     private ArrayList<SubSubCategoriesBean> mSubSubCategoriesBeanArrayList;
     private Context context;
-    private TextView itemListSelectdSubSubCatTv;
+    //private TextView itemListSelectdSubSubCatTv;
     private TextView lastitemListSelectdSubSubCatTv;
     private ItemListSubSubCatAdapterInterface mItemListSubSubCatAdapterInterface;
 
-    public ItemListSubSubCatAdapter(Context context, ArrayList<SubSubCategoriesBean> mSubSubCategoriesBeanArrayList, TextView itemListSelectdSubSubCatTv, ItemListSubSubCatAdapterInterface mItemListSubSubCatAdapterInterface) {
+    public ItemListSubSubCatAdapter(Context context, ArrayList<SubSubCategoriesBean> mSubSubCategoriesBeanArrayList,  ItemListSubSubCatAdapterInterface mItemListSubSubCatAdapterInterface) {
         this.mSubSubCategoriesBeanArrayList = mSubSubCategoriesBeanArrayList;
         this.context = context;
-        this.itemListSelectdSubSubCatTv = itemListSelectdSubSubCatTv;
         this.mItemListSubSubCatAdapterInterface = mItemListSubSubCatAdapterInterface;
     }
+
 
     @Override
     public ItemListSubSubCatAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -44,7 +46,7 @@ public class ItemListSubSubCatAdapter extends RecyclerView.Adapter<ItemListSubSu
         if (lastitemListSelectdSubSubCatTv == null) {
             viewHolder.tv_sub_sub_cat_adpt_tv.setSelected(true);
             lastitemListSelectdSubSubCatTv = viewHolder.tv_sub_sub_cat_adpt_tv;
-            itemListSelectdSubSubCatTv.setText(mSubSubCategoriesBeanArrayList.get(i).getSubSubcategoryName());
+           // itemListSelectdSubSubCatTv.setText(mSubSubCategoriesBeanArrayList.get(i).getSubSubcategoryName());
             mItemListSubSubCatAdapterInterface.subSubCategorySelected(mSubSubCategoriesBeanArrayList.get(i).getSubSubCategoryId());
         }
         viewHolder.tv_sub_sub_cat_adpt_tv.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +56,7 @@ public class ItemListSubSubCatAdapter extends RecyclerView.Adapter<ItemListSubSu
                     lastitemListSelectdSubSubCatTv.setSelected(false);
                 viewHolder.tv_sub_sub_cat_adpt_tv.setSelected(true);
                 lastitemListSelectdSubSubCatTv = viewHolder.tv_sub_sub_cat_adpt_tv;
-                itemListSelectdSubSubCatTv.setText(mSubSubCategoriesBeanArrayList.get(i).getSubSubcategoryName());
+              //  itemListSelectdSubSubCatTv.setText(mSubSubCategoriesBeanArrayList.get(i).getSubSubcategoryName());
                 mItemListSubSubCatAdapterInterface.subSubCategorySelected(mSubSubCategoriesBeanArrayList.get(i).getSubSubCategoryId());
             }
         });

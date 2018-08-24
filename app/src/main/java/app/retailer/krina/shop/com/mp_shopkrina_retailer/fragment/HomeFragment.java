@@ -81,7 +81,7 @@ import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.CategoryBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.ItemList;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.SubCategoriesBean;
-import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.shopbycompanybean;
+import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.shopbybrandbean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.customClasses.Utility;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.databinding.FragmentHomeBinding;
 
@@ -977,12 +977,13 @@ public class HomeFragment extends Fragment {
         }
     }
 
-  /* public class ShopbyCompany extends  AsyncTask<String ,Void,JSONArray> {
+   public class Shopbybrand extends  AsyncTask<String ,Void,JSONArray> {
        Dialog mDialog;
        AnimationDrawable animation;
 
        @Override
-       protected void onPreExecute() {
+       protected void onPreExecute()
+       {
            super.onPreExecute();
            mDialog = new Dialog(getActivity());
            mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -1001,7 +1002,7 @@ public class HomeFragment extends Fragment {
        protected JSONArray doInBackground(String... params) {
            JSONArray jsonArrayFromUrl = null;
            try {
-               jsonArrayFromUrl = new HttpUrlConnectionJSONParser().getJsonArrayFromHttpUrlConnection(Constant.BASE_URL_SHOPBYCMPNY + "?subcategoryid=" +7, null, HttpUrlConnectionJSONParser.Http.GET);
+               jsonArrayFromUrl = new HttpUrlConnectionJSONParser().getJsonArrayFromHttpUrlConnection(Constant.BASE_URL+"SubsubCategory/GetAllBrand", null, HttpUrlConnectionJSONParser.Http.GET);
            } catch (Exception e) {
                e.printStackTrace();
            }
@@ -1012,19 +1013,20 @@ public class HomeFragment extends Fragment {
        @Override
        protected void onPostExecute(JSONArray jsonArray) {
            super.onPostExecute(jsonArray);
-           ArrayList<shopbycompanybean> mshopcompany = new ArrayList<>();
-           mshopcompany.clear();
+           ArrayList<shopbybrandbean> mshopbrand = new ArrayList<>();
+           mshopbrand.clear();
 
            if (jsonArray != null && jsonArray.length() > 0) {
                for (int i = 0; i < jsonArray.length(); i++) {
                    Log.d("jsoncheckshop11", String.valueOf(jsonArray.length()));
                    try {
                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                       String SubsubCategoryid = isNullOrEmpty(jsonObject, "SubsubCategoryid");
+                       String SubCategoryid = isNullOrEmpty(jsonObject, "SubCategoryId");
                        String SubsubcategoryName = isNullOrEmpty(jsonObject, "SubsubcategoryName");
                        String LogoUrl = isNullOrEmpty(jsonObject, "LogoUrl");
                        String Categoryid = isNullOrEmpty(jsonObject, "Categoryid");
-                       mshopcompany.add(new shopbycompanybean(Categoryid,SubsubCategoryid, SubsubcategoryName, LogoUrl ));
+                       String SubcategoryName = isNullOrEmpty(jsonObject, "SubcategoryName");
+                       mshopbrand.add(new shopbybrandbean(Categoryid,SubCategoryid, SubsubcategoryName, LogoUrl,SubcategoryName ));
                    }
 
                    catch (Exception e) {
@@ -1034,18 +1036,18 @@ public class HomeFragment extends Fragment {
                if (getActivity() != null) {
 
                    ComplexPreferences shopbycompanypref = ComplexPreferences.getComplexPreferences((getActivity()), Constant.ShopBY_PREF, getActivity().MODE_PRIVATE);
-                   shopbycompanypref.putObject(Constant.ShopBY_PREF_OBJ, mshopcompany);
+                   shopbycompanypref.putObject(Constant.ShopBY_PREF_OBJ, mshopbrand);
                    shopbycompanypref.commit();
 
-                   Type typeshopbyBeanArrayList = new TypeToken<ArrayList<shopbycompanybean>>() {
+                   Type typeshopbyBeanArrayList = new TypeToken<ArrayList<shopbybrandbean>>() {
                    }.getType();
 
-                   mshopcompany = shopbycompanypref.getArray(Constant.ShopBY_PREF_OBJ, typeshopbyBeanArrayList);
+                   mshopbrand = shopbycompanypref.getArray(Constant.ShopBY_PREF_OBJ, typeshopbyBeanArrayList);
 
-                   if (mshopcompany != null && !mshopcompany.isEmpty()) {
-                       Log.d("mshopcompany", String.valueOf(mshopcompany));
+                   if (mshopbrand != null && !mshopbrand.isEmpty()) {
+                       Log.d("mshopcompany", String.valueOf(mshopbrand));
                        try {
-                           ShopbycompanyAdapter Adapter = new ShopbycompanyAdapter(getActivity(), rowIMageHeight, rowIMageWidth, getFragmentManager(), mshopcompany == null ? new ArrayList<shopbycompanybean>() : mshopcompany);
+                           ShopbycompanyAdapter Adapter = new ShopbycompanyAdapter(getActivity(), rowIMageHeight, rowIMageWidth, getFragmentManager(), mshopbrand == null ? new ArrayList<shopbybrandbean>() : mshopbrand);
                            shopCardRecyclerView.setAdapter(Adapter);
                        } catch (IndexOutOfBoundsException e) {
                            startActivity(new Intent(getActivity(), HomeActivity.class));
@@ -1061,7 +1063,7 @@ public class HomeFragment extends Fragment {
                Toast.makeText(getActivity(), "Improper response from server", Toast.LENGTH_SHORT).show();
 
                ComplexPreferences mBaseCatSubCatCat = ComplexPreferences.getComplexPreferences(getActivity(), Constant.ShopBY_PREF, getActivity().MODE_PRIVATE);
-               mBaseCatSubCatCat.putObject(Constant.ShopBY_PREF_OBJ, mshopcompany);
+               mBaseCatSubCatCat.putObject(Constant.ShopBY_PREF_OBJ, mshopbrand);
                mBaseCatSubCatCat.commit();
                mBaseCatSubCatCat.clear();
 
@@ -1075,7 +1077,7 @@ public class HomeFragment extends Fragment {
                mDialog.dismiss();
            }
        }
-   }*/
+   }
 //API Call of popular brands
     public class GetPopularBrands extends AsyncTask<String, Void, JSONArray> {
         Dialog mDialog;
@@ -1515,7 +1517,8 @@ public class HomeFragment extends Fragment {
             mAppPromotionList.clear();
             Log.d("jsoncheck333", String.valueOf(jsonArray));
             if (jsonArray != null && jsonArray.length() > 0) {
-                for (int i = 0; i < jsonArray.length(); i++) {
+                for (int i = 0; i < jsonArray.length(); i++)
+                {
                     try {
                         JSONObject mJsonObject = jsonArray.getJSONObject(i);
                         String Id = isNullOrEmpty(mJsonObject, "Id");

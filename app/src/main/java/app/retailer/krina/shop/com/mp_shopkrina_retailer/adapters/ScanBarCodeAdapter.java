@@ -32,7 +32,6 @@ import app.retailer.krina.shop.com.mp_shopkrina_retailer.BarcodeScanItem;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.Constant;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.HomeActivity;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.R;
-import app.retailer.krina.shop.com.mp_shopkrina_retailer.BarcodeScanItem;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.CartItemBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.CartItemInfo;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.ItemList;

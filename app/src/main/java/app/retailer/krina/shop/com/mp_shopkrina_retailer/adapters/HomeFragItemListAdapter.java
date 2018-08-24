@@ -9,6 +9,9 @@ import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -40,6 +43,7 @@ import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.CartItemBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.CartItemInfo;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.ItemList;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.customClasses.Utility;
+import app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment.SubcatimageFragment;
 
 
 /**
@@ -61,7 +65,8 @@ public class HomeFragItemListAdapter extends RecyclerView.Adapter<HomeFragItemLi
     int  count=0;
     String language;
     private TextView show_popup;
-    public HomeFragItemListAdapter(Context context, ArrayList<ItemList> itemListArrayList, int ivWidth, int ivHeight, TextView tvTotalItemPrice, TextView tvTotalItemQty , TextView tvTotalDp, TextView show_popup) {
+    FragmentManager fragmentManager;
+    public HomeFragItemListAdapter(Context context, ArrayList<ItemList> itemListArrayList, int ivWidth, int ivHeight, TextView tvTotalItemPrice, TextView tvTotalItemQty, TextView tvTotalDp, TextView show_popup, FragmentManager fragmentManager) {
 
         this.itemListArrayList = itemListArrayList;
         this.context = context;
@@ -73,6 +78,7 @@ public class HomeFragItemListAdapter extends RecyclerView.Adapter<HomeFragItemLi
         this.show_popup= show_popup;
 
         this.tvTotalItemQty = tvTotalItemQty;
+        this.fragmentManager= fragmentManager;
     }
 
     @Override
@@ -169,7 +175,10 @@ public class HomeFragItemListAdapter extends RecyclerView.Adapter<HomeFragItemLi
                             tvTotalItemQty.setText("" + (int) ((HomeActivity) context).getCartItem().getTotalQuantity());
                         }
                         break;
-                    } else {
+                    }
+                    else
+
+                        {
                         isItemFound = false;
                     }
                 }
@@ -295,7 +304,18 @@ public class HomeFragItemListAdapter extends RecyclerView.Adapter<HomeFragItemLi
             }
         });
 
-
+       viewHolder.ivItemImage.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Fragment fragment = Fragment.instantiate(context, SubcatimageFragment.class.getName());
+               Bundle bundle = new Bundle();
+               bundle.putString("name", itemListArrayList.get(i).getItemname());
+               System.out.println("name123"+itemListArrayList.get(i).getItemname());
+               bundle.putString("image",Constant.BASE_URL_Images1 + itemListArrayList.get(i).getItemNumber() + ".jpg");
+               fragment.setArguments(bundle);
+               fragmentManager.beginTransaction().addToBackStack(fragmentManager.getFragments().toString()).replace(R.id.content_frame, fragment, "HomeFragItemList").commit();
+           }
+       });
 
         viewHolder.ivPlusImage.setOnClickListener(new View.OnClickListener() {
             @Override

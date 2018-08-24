@@ -50,7 +50,7 @@ import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.customClasses.Utility;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment.HomeFragItemList;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment.HomeFragment;
-import app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment.NotificationFrag;
+//import app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment.NotificationFrag;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment.SearchFragItemList;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -364,7 +364,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         View header=navigationView.getHeaderView(0);
         mExpandableListView = (ExpandableListView) findViewById(R.id.navigationmenu);
         tvshop=(TextView)header.findViewById(R.id.Shopname) ;
-        tvshop.setText( mRetailerBean.getShopName());
+       tvshop.setText( mRetailerBean.getShopName());
+        System.out.println ("Shopname"+mRetailerBean.getShopName());
         mFrameLayout = (FrameLayout) findViewById(R.id.content_frame);
         fragmentManager = HomeActivity.this.getSupportFragmentManager();
     }
@@ -389,8 +390,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 @Override
                 public void onGroupExpand(int groupPosition) {
                     if (lastExpandedPosition != -1
+
                             && groupPosition != lastExpandedPosition) {
+
                         mExpandableListView.collapseGroup(lastExpandedPosition);
+
                     }
                     lastExpandedPosition = groupPosition;
                 }
@@ -416,11 +420,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
                         Fragment myFragment = getVisibleFragment();
                         if (myFragment.getTag().equalsIgnoreCase("HomeFragment")) {
-                            fragmentManager.beginTransaction().addToBackStack(fragmentManager.getFragments().toString()).replace(R.id.content_frame, fragment, "HomeFragItemList").commit();
-                        } else {
+
                             fragmentManager.beginTransaction().addToBackStack(fragmentManager.getFragments().toString()).replace(R.id.content_frame, fragment, "HomeFragItemList").commit();
                         }
-                    } else {
+                        else
+                            {
+                            fragmentManager.beginTransaction().addToBackStack(fragmentManager.getFragments().toString()).replace(R.id.content_frame, fragment, "HomeFragItemList").commit();
+                        }
+                    }
+                    else {
                         Toast.makeText(HomeActivity.this, "Unable to process please try again", Toast.LENGTH_SHORT).show();
                     }
                     if (drawer != null)
@@ -428,6 +436,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     return true;
                 }
             });
+
             mExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
                 @Override
                 public boolean onGroupClick(ExpandableListView expandableListView, View view, int i, long l) {

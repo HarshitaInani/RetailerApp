@@ -275,7 +275,7 @@ public class HomeFragNewlyAddedBrandList extends Fragment {
                 mDialog.dismiss();
             }
             if (result == 1) {
-                adapter = new HomeFragNewlyAddedAdapter(getActivity(), mNewlyAddeddArrayList,rowitemImageWidth, rowitemImageHeight, tvTotalItemPrice, tvTotalItemQty, tvTotalDp,show_popup,mItemListAllValue);
+                adapter = new HomeFragNewlyAddedAdapter(getActivity(), mNewlyAddeddArrayList,rowitemImageWidth, rowitemImageHeight, tvTotalItemPrice, tvTotalItemQty, tvTotalDp,show_popup,mItemListAllValue,getFragmentManager());
                 mItemListRecyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             } else {

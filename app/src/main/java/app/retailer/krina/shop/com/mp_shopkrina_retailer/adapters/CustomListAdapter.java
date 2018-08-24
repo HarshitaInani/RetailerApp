@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ import app.retailer.krina.shop.com.mp_shopkrina_retailer.SubsubBrands;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.Activitiespojo;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.NewsFeeds;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.indexingscroll.StringMatcher;
+
 
 
 public class CustomListAdapter extends ArrayAdapter <NewsFeeds>implements SectionIndexer {
@@ -68,7 +70,9 @@ public class CustomListAdapter extends ArrayAdapter <NewsFeeds>implements Sectio
     }
 
     @Override
-    public int getSectionForPosition(int position) {
+    public int getSectionForPosition(int position)
+    {
+
         return 0;
     }
 
@@ -135,6 +139,7 @@ public class CustomListAdapter extends ArrayAdapter <NewsFeeds>implements Sectio
                 context.startActivity(i);
             }
         });
+
         return convertView;
 
 

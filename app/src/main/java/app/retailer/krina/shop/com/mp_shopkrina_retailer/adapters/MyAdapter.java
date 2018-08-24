@@ -2,13 +2,15 @@ package app.retailer.krina.shop.com.mp_shopkrina_retailer.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.R;
@@ -27,6 +29,7 @@ public class MyAdapter extends BaseAdapter {
         super();
         this.c = context;
         this.mItemList = mItemList;
+
     }
 
     @Override
@@ -51,9 +54,13 @@ public class MyAdapter extends BaseAdapter {
         View row = inflater.inflate(R.layout.spinner_item, parent, false);
         TextView label = (TextView) row.findViewById(R.id.moq);
         TextView price = (TextView) row.findViewById(R.id.price);
+        TextView margin = (TextView) row.findViewById(R.id.margin);
         label.setText("MOQ "+mItemListPojo.getMinOrderQty());
         price.setText("RS "+ mItemListPojo.getUnitPrice());
-       //TextView sub = (TextView) row.findViewById(R.id.sub);
+       /* String text = "<font color=#FF4500>&#8377; " +  "  Margins: " + (new DecimalFormat("##.##").format((((Double.parseDouble(ItemList.get(ii).getPrice()) - Double.parseDouble(ItemList.get(ii).getUnitPrice())) / Double.parseDouble(ItemList.get(ii).getPrice())) * 100))) + "%";
+        margin.setText(Html.fromHtml(text));*/
+        String text1 =/* "<font color=#000> " + */ "  Margins: " + (new DecimalFormat("##.##").format((((Double.parseDouble(mItemListPojo.getPrice()) - Double.parseDouble(mItemListPojo.getUnitPrice())) / Double.parseDouble(mItemListPojo.getPrice())) * 100))) + "%";
+        margin.setText(  Html.fromHtml(text1));
        // sub.setText(cur_obj.getSub());
       //  ImageView icon = (ImageView) row.findViewById(R.id.image);
        // icon.setImageResource(cur_obj.getImage_id());
