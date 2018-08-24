@@ -116,6 +116,7 @@ public class Constant {
     public static String EXECLUSIVE_BRANDS_PREFOBJ = "ExecutiveBrandsPrefObj";
     public static String POPULAR_BRANDS_PREF1 = "PopularBrandsPref1";
     public static String POPULAR_BRANDS_PREF2 = "PopularBrandsPref2";
+    public static String ALL_BRANDS_PREF =        "AllBrandPref";
     public static String APP_PROMOTION_PREF = "AppPromotionPref";
     public static String TODAY_DHAMAKA_PREF = "TodayDhamakaPref";
     public static String NEWLY_ADDED_BRANDS_PREF = "NewlyAddedBrandsPref";
