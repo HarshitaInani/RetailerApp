@@ -38,7 +38,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -47,6 +50,7 @@ import app.retailer.krina.shop.com.mp_shopkrina_retailer.HomeActivity;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.R;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.Utils;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.adapters.AppPromotionAdapter;
+import app.retailer.krina.shop.com.mp_shopkrina_retailer.adapters.BrandAdapter;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.adapters.BulkItemAdapter;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.adapters.EmptyStockAdapter;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.adapters.ExeclusiveBrandsAdapter;
@@ -70,6 +74,7 @@ import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.EmptyStockPojo;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.ExeclusiveBrandsBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.FindHighDpPojo;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.NewlyAddedBrandsBean;
+import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.NewsFeeds;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.OfferList;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.PopularBrandBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.PromotionPojo;
@@ -118,6 +123,7 @@ public class HomeFragment extends Fragment {
     RecyclerView mMostSelledRecycler;
     RecyclerView mFindHighDpRecycler;
     RecyclerView mExeclusiveRecycler;
+    RecyclerView mBrandRecycler;
     LinearLayoutManager layoutManager123,layoutManager,layoutManager1,layoutManager2,layoutManager3,layoutManager4,layoutManager5,layoutManager6,layoutManager7,layoutManager8,layoutManager9,layoutManager10,layoutManager11,layoutManager12;
     AsyncTask<String, Void, JSONArray> getOfferesAsyncTask;
     AsyncTask<String, Void, JSONObject> getCategorySubCategoryAsyncTask;
@@ -148,7 +154,8 @@ public class HomeFragment extends Fragment {
     ProgressBar progressBar;
     OfferAdapter mofferAdapter;
     Button btn;
-    LinearLayout  homecare,personalcare,grocery,l1,lerPromotion,lerNewlyAdded,lerTopAdded,lerTodayDhamaka,lerEmptyStock,lerBulkItem,lerMostSalld,lerFindItemHighDp,lerPopularItem,lerExclusiveBrand,lerOffer;
+    List<NewsFeeds> feedsList = new ArrayList<NewsFeeds>();
+    LinearLayout  homecare,personalcare,grocery,l1,lerPromotion,lerNewlyAdded,lerTopAdded,lerTodayDhamaka,lerEmptyStock,lerBulkItem,lerMostSalld,lerFindItemHighDp,lerPopularItem,lerExclusiveBrand,lerOffer,lerBrand;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -181,6 +188,7 @@ public class HomeFragment extends Fragment {
         });
 
         l1=fragmentHomeBinding.l1;
+        lerBrand=fragmentHomeBinding.lerBrand;
         lerOffer=fragmentHomeBinding.lerOffer;
         lerPromotion=fragmentHomeBinding.lerPromotion;
         lerNewlyAdded=fragmentHomeBinding.lerNewlyAdded;
@@ -272,6 +280,10 @@ public class HomeFragment extends Fragment {
         layoutManager11 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mExeclusiveRecycler.setLayoutManager(layoutManager11);
 
+        mBrandRecycler=fragmentHomeBinding.appBrandRecycler;
+        layoutManager12 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        mBrandRecycler.setLayoutManager(layoutManager12);
+
 
         shopCardRecyclerView.setHasFixedSize(false);
         mpersonalcareRecyclerView.setHasFixedSize(false);
@@ -289,6 +301,7 @@ public class HomeFragment extends Fragment {
         mMostSelledRecycler.setHasFixedSize(false);
         mFindHighDpRecycler.setHasFixedSize(false);
         mExeclusiveRecycler.setHasFixedSize(false);
+        mBrandRecycler.setHasFixedSize(false);
 
 
 
@@ -308,6 +321,10 @@ public class HomeFragment extends Fragment {
         mMostSelledRecycler.setNestedScrollingEnabled(false);
         mFindHighDpRecycler.setNestedScrollingEnabled(false);
         mExeclusiveRecycler.setNestedScrollingEnabled(false);
+        mBrandRecycler.setNestedScrollingEnabled(false);
+
+
+
 
 
         mNestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
@@ -665,6 +682,19 @@ public class HomeFragment extends Fragment {
                 lerOffer.setVisibility(View.VISIBLE);
 
             }
+
+            if (feedsList != null && !feedsList.isEmpty()) {
+
+                BrandAdapter mbrandadapter = new BrandAdapter(getActivity(), rowIMageHeight, rowIMageWidth, getFragmentManager(),feedsList);
+                mBrandRecycler.setAdapter(mbrandadapter);
+                lerBrand.setVisibility(View.VISIBLE);
+
+            }
+
+
+
+
+
         } else {
             isItemListAvail = false;
         }
@@ -677,6 +707,7 @@ public class HomeFragment extends Fragment {
                     condition=1;
                  getCategorySubCategoryAsyncTask = new GetCategorySubCategory().execute(mRetailerBean.getWarehouseid());
                     getOfferesAsyncTask = new GetOffers().execute();
+                                          new Shopbybrand().execute();
                 }
             } else {
                 Toast.makeText(getActivity(), "Internet connection is not available", Toast.LENGTH_SHORT).show();
@@ -985,7 +1016,7 @@ public class HomeFragment extends Fragment {
        protected void onPreExecute()
        {
            super.onPreExecute();
-           mDialog = new Dialog(getActivity());
+        /*   mDialog = new Dialog(getActivity());
            mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
            mDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
            mDialog.setContentView(R.layout.progress_dialog);
@@ -996,6 +1027,7 @@ public class HomeFragment extends Fragment {
            animation.start();
            mDialog.setCancelable(false);
            mDialog.show();
+           */
        }
 
        @Override
@@ -1012,70 +1044,106 @@ public class HomeFragment extends Fragment {
 
        @Override
        protected void onPostExecute(JSONArray jsonArray) {
-           super.onPostExecute(jsonArray);
-           ArrayList<shopbybrandbean> mshopbrand = new ArrayList<>();
-           mshopbrand.clear();
 
+
+           progressBar.setVisibility(View.GONE);
+           Log.d("Json:::",jsonArray.toString());
+
+           ArrayList<PopularBrandBean> mPopularBrandBeenArrayList = new ArrayList<>();
+           mPopularBrandBeenArrayList.clear();
            if (jsonArray != null && jsonArray.length() > 0) {
-               for (int i = 0; i < jsonArray.length(); i++) {
-                   Log.d("jsoncheckshop11", String.valueOf(jsonArray.length()));
-                   try {
-                       JSONObject jsonObject = jsonArray.getJSONObject(i);
-                       String SubCategoryid = isNullOrEmpty(jsonObject, "SubCategoryId");
-                       String SubsubcategoryName = isNullOrEmpty(jsonObject, "SubsubcategoryName");
-                       String LogoUrl = isNullOrEmpty(jsonObject, "LogoUrl");
-                       String Categoryid = isNullOrEmpty(jsonObject, "Categoryid");
-                       String SubcategoryName = isNullOrEmpty(jsonObject, "SubcategoryName");
-                       mshopbrand.add(new shopbybrandbean(Categoryid,SubCategoryid, SubsubcategoryName, LogoUrl,SubcategoryName ));
-                   }
 
-                   catch (Exception e) {
-                       e.printStackTrace();
+               for (int i = 0; i < jsonArray.length(); i++) {
+
+                   try {
+                       JSONObject obj = jsonArray.getJSONObject(i);
+                       NewsFeeds feeds = new NewsFeeds(obj.getString("SubsubcategoryName"), obj.getString("LogoUrl"), obj.getString("SubsubCategoryid"), obj.getString("SubsubcategoryName"), obj.getString("Categoryid"), "1", obj.getString("SubCategoryId"), obj.getString("SubcategoryName"));
+                       Collections.sort(feedsList, new Comparator<NewsFeeds>() {
+                           @Override
+                           public int compare(NewsFeeds lhs, NewsFeeds rhs) {
+                               return lhs.getFeedName().compareTo(rhs.getFeedName());
+                           }
+                       });
+                       feedsList.add(feeds);
+
+                   } catch (Exception e) {
+                       System.out.println(e.getMessage());
+                   } finally {
+                       //Notify adapter about data changes
+
                    }
                }
+
                if (getActivity() != null) {
 
-                   ComplexPreferences shopbycompanypref = ComplexPreferences.getComplexPreferences((getActivity()), Constant.ShopBY_PREF, getActivity().MODE_PRIVATE);
-                   shopbycompanypref.putObject(Constant.ShopBY_PREF_OBJ, mshopbrand);
-                   shopbycompanypref.commit();
 
-                   Type typeshopbyBeanArrayList = new TypeToken<ArrayList<shopbybrandbean>>() {
-                   }.getType();
+                   ComplexPreferences mBaseCatSubCatCat = ComplexPreferences.getComplexPreferences(getActivity(), Constant.ALL_BRANDS_PREF, getActivity().MODE_PRIVATE);
+                   mBaseCatSubCatCat.putObject(Constant.ALL_BRANDS_PREF, feedsList);
+                   mBaseCatSubCatCat.commit();
 
-                   mshopbrand = shopbycompanypref.getArray(Constant.ShopBY_PREF_OBJ, typeshopbyBeanArrayList);
 
-                   if (mshopbrand != null && !mshopbrand.isEmpty()) {
-                       Log.d("mshopcompany", String.valueOf(mshopbrand));
+
+
+                   mBaseCatSubCatCat = ComplexPreferences.getComplexPreferences(getActivity(), Constant.ALL_BRANDS_PREF, getActivity().MODE_PRIVATE);
+                   BaseCatSubCatBean mBaseCatSubCatBean = mBaseCatSubCatCat.getObject(Constant.ALL_BRANDS_PREF, BaseCatSubCatBean.class);
+                   if (mBaseCatSubCatBean != null && !mBaseCatSubCatBean.getmBaseCatBeanArrayList().isEmpty()) {
+                       isItemListAvail = true;
+
+                       Type typePopularBrandBeanArrayList = new TypeToken<ArrayList<PopularBrandBean>>() {
+                       }.getType();
+
+                       mBaseCatSubCatCat = ComplexPreferences.getComplexPreferences(getActivity(), Constant.POPULAR_BRANDS_PREF2, getActivity().MODE_PRIVATE);
+                       mPopularBrandBeenArrayList = mBaseCatSubCatCat.getArray(Constant.POPULAR_BRANDS_PREFOBJ2, typePopularBrandBeanArrayList);
+                       mBaseCatSubCatCat = ComplexPreferences.getComplexPreferences(getActivity(), Constant.POPULAR_BRANDS_PREF, getActivity().MODE_PRIVATE);
+                       // mPopularBrandBeenArrayList = mBaseCatSubCatCat.getArray(Constant.POPULAR_BRANDS_PREFOBJ, typePopularBrandBeanArrayList);
+                       if (mPopularBrandBeenArrayList != null && !mPopularBrandBeenArrayList.isEmpty())
+                           isPopularBrandItemListAvail = true;
                        try {
-                           ShopbycompanyAdapter Adapter = new ShopbycompanyAdapter(getActivity(), rowIMageHeight, rowIMageWidth, getFragmentManager(), mshopbrand == null ? new ArrayList<shopbybrandbean>() : mshopbrand);
-                           shopCardRecyclerView.setAdapter(Adapter);
+                           HomeFragPopularBrandAdapter mHomeFragRecyclerViewAdapter = new HomeFragPopularBrandAdapter(getActivity(), mBaseCatSubCatBean, rowIMageHeight, rowIMageWidth, getFragmentManager(), mRetailerBean, mPopularBrandBeenArrayList == null ? new ArrayList<PopularBrandBean>() : mPopularBrandBeenArrayList);
+                           mHomeFragRecyclerView2.setAdapter(mHomeFragRecyclerViewAdapter);
                        } catch (IndexOutOfBoundsException e) {
                            startActivity(new Intent(getActivity(), HomeActivity.class));
                        } catch (Exception e) {
                            startActivity(new Intent(getActivity(), HomeActivity.class));
                        }
-
                    }
 
+                   if (Utils.isInternetConnected(getActivity())) {
+
+
+                       getBrandwisepramotionTask = new GetBrandWisePromotion().execute();
+
+
+                   } else {
+                       Toast.makeText(getActivity(), "Internet connection is not available", Toast.LENGTH_SHORT).show();
+                   }
                }
-           } else {
-
-               Toast.makeText(getActivity(), "Improper response from server", Toast.LENGTH_SHORT).show();
-
-               ComplexPreferences mBaseCatSubCatCat = ComplexPreferences.getComplexPreferences(getActivity(), Constant.ShopBY_PREF, getActivity().MODE_PRIVATE);
-               mBaseCatSubCatCat.putObject(Constant.ShopBY_PREF_OBJ, mshopbrand);
-               mBaseCatSubCatCat.commit();
-               mBaseCatSubCatCat.clear();
 
            }
 
-
-           if (mDialog.isShowing())
-
-           {
+           else {
+               Toast.makeText(getActivity(), "Improper response from server", Toast.LENGTH_SHORT).show();
+               ComplexPreferences mBaseCatSubCatCat = ComplexPreferences.getComplexPreferences(getActivity(), Constant.POPULAR_BRANDS_PREF2, getActivity().MODE_PRIVATE);
+               mBaseCatSubCatCat.putObject(Constant.POPULAR_BRANDS_PREFOBJ2, mPopularBrandBeenArrayList);
+               mBaseCatSubCatCat.commit();
+               mBaseCatSubCatCat.clear();
+           }
+           if (mDialog.isShowing()) {
                animation.stop();
                mDialog.dismiss();
            }
+
+
+
+
+
+
+
+           BrandAdapter mbrandadapter = new BrandAdapter(getActivity(), rowIMageHeight, rowIMageWidth, getFragmentManager(),feedsList);
+           mBrandRecycler.setAdapter(mbrandadapter);
+           lerBrand.setVisibility(View.VISIBLE);
+
+
        }
    }
 //API Call of popular brands
