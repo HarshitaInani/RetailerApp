@@ -43,6 +43,7 @@ import java.util.Locale;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.adapters.HomeActivityNavExpandableListAdapter;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.CartItemBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.CartItemInfo;
+import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.NewsFeeds;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.RetailerBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.BaseCatBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.CategoryBean;
@@ -69,6 +70,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     ImageView toolBarSearchIv;
     RelativeLayout notificationIcon;
     int lastExpandedPosition = -1;
+
 
     public ArrayList<BaseCatBean> listDataHeaderGlobal;
     public HashMap<BaseCatBean, ArrayList<CategoryBean>> listDataChildGlobal;
