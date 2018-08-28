@@ -83,6 +83,7 @@ import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.SelledItemPojo;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.TodayDhamakaPojo;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.AllTopAddedItemList;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.BaseCatBean;
+import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.BrandListPojo;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.CategoryBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.ItemList;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.SubCategoriesBean;
@@ -154,7 +155,7 @@ public class HomeFragment extends Fragment {
     ProgressBar progressBar;
     OfferAdapter mofferAdapter;
     Button btn;
-    List<NewsFeeds> feedsList = new ArrayList<NewsFeeds>();
+    List<NewsFeeds> feedsList ;
     LinearLayout  homecare,personalcare,grocery,l1,lerPromotion,lerNewlyAdded,lerTopAdded,lerTodayDhamaka,lerEmptyStock,lerBulkItem,lerMostSalld,lerFindItemHighDp,lerPopularItem,lerExclusiveBrand,lerOffer,lerBrand;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -525,6 +526,7 @@ public class HomeFragment extends Fragment {
             Type typemgroceryArrayList = new TypeToken< ArrayList<CategoryBean>>() {}.getType();
             Type typemhomecareArrayList = new TypeToken< ArrayList<CategoryBean>>() {}.getType();
             Type typempersonalcareArrayList = new TypeToken< ArrayList<CategoryBean>>() {}.getType();
+            Type typeALLBRANDArrayList = new TypeToken< ArrayList<NewsFeeds>>() {}.getType();
             Type typePopularBrandBeanArrayList = new TypeToken<ArrayList<PopularBrandBean>>()
             {
             }.getType();
@@ -580,6 +582,9 @@ public class HomeFragment extends Fragment {
             mpersonalcaregoryBeanArrayList1=personalcarecategory.getArray(Constant.PERSONAL_ITEM_PREFOBJ,typempersonalcareArrayList);
 
 
+            ComplexPreferences allbrandcategory = ComplexPreferences.getComplexPreferences(getActivity(), Constant.ALL_BRANDS_PREF, getActivity().MODE_PRIVATE);
+            feedsList=personalcarecategory.getArray(Constant.ALL_BRANDS_PREF,typeALLBRANDArrayList);
+
             ComplexPreferences  mBaseOFFER_SELLED_ITEM_PREF= ComplexPreferences.getComplexPreferences(getActivity(), Constant.OFFER_SELLED_ITEM_PREF, getActivity().MODE_PRIVATE);
             mPopularBrandBeenArrayList3 = mBaseOFFER_SELLED_ITEM_PREF.getArray(Constant.OFFER_SELLED_ITEM_PREFOBJ,typePopularBrandBeanArrayList3);
                 isPopularBrandItemListAvail = true;
@@ -587,6 +592,17 @@ public class HomeFragment extends Fragment {
                 HomeFragRecyclerViewAdapter mHomeFragRecyclerViewAdapter = new HomeFragRecyclerViewAdapter(getActivity(), mBaseCatSubCatBean, rowIMageHeight, rowIMageWidth, getFragmentManager(), mRetailerBean, mPopularBrandBeenArrayList == null ? new ArrayList<PopularBrandBean>() : mPopularBrandBeenArrayList);
                 mHomeFragRecyclerView.setAdapter(mHomeFragRecyclerViewAdapter);
            // }
+
+
+
+         ComplexPreferences   mallbrand = ComplexPreferences.getComplexPreferences(getActivity(), Constant.ALL_BRANDS_PREF, getActivity().MODE_PRIVATE);
+            BrandListPojo mnewsfeed =  mallbrand.getObject(Constant.ALL_BRANDS_PREF, BrandListPojo.class);
+
+
+
+
+
+
 //Set adapter in recycleView if data is Comes From API
 
             if (mExeclusiveBrandsBeanList != null && !mExeclusiveBrandsBeanList.isEmpty()) {
@@ -683,12 +699,12 @@ public class HomeFragment extends Fragment {
 
             }
 
-            if (feedsList != null && !feedsList.isEmpty()) {
+            if (mnewsfeed.getBrands() != null && !mnewsfeed.getBrands().isEmpty()) {
+                isItemListAvail = true;
 
-                BrandAdapter mbrandadapter = new BrandAdapter(getActivity(), rowIMageHeight, rowIMageWidth, getFragmentManager(),feedsList);
+                BrandAdapter mbrandadapter = new BrandAdapter(getActivity(), rowIMageHeight, rowIMageWidth, getFragmentManager(),mnewsfeed.getBrands());
                 mBrandRecycler.setAdapter(mbrandadapter);
                 lerBrand.setVisibility(View.VISIBLE);
-
             }
 
 
@@ -1044,7 +1060,7 @@ public class HomeFragment extends Fragment {
 
        @Override
        protected void onPostExecute(JSONArray jsonArray) {
-
+           feedsList = new ArrayList<NewsFeeds>();
 
            progressBar.setVisibility(View.GONE);
            Log.d("Json:::",jsonArray.toString());
@@ -1075,38 +1091,32 @@ public class HomeFragment extends Fragment {
                }
 
                if (getActivity() != null) {
+                   BrandListPojo complexObject = new BrandListPojo();
+                   complexObject.setBrands(feedsList);
+
+                   Log.d("mayank", "onPostExecute: "+feedsList.size()+"and");
+
+                   ComplexPreferences mallbrand = ComplexPreferences.getComplexPreferences(getActivity(), Constant.ALL_BRANDS_PREF, getActivity().MODE_PRIVATE);
+                   mallbrand.putObject(Constant.ALL_BRANDS_PREF, complexObject);
+                   mallbrand.commit();
 
 
-                   ComplexPreferences mBaseCatSubCatCat = ComplexPreferences.getComplexPreferences(getActivity(), Constant.ALL_BRANDS_PREF, getActivity().MODE_PRIVATE);
-                   mBaseCatSubCatCat.putObject(Constant.ALL_BRANDS_PREF, feedsList);
-                   mBaseCatSubCatCat.commit();
 
 
+                   mallbrand = ComplexPreferences.getComplexPreferences(getActivity(), Constant.ALL_BRANDS_PREF, getActivity().MODE_PRIVATE);
+                   BrandListPojo mnewsfeed =  mallbrand.getObject(Constant.ALL_BRANDS_PREF, BrandListPojo.class);
 
 
-                   mBaseCatSubCatCat = ComplexPreferences.getComplexPreferences(getActivity(), Constant.ALL_BRANDS_PREF, getActivity().MODE_PRIVATE);
-                   BaseCatSubCatBean mBaseCatSubCatBean = mBaseCatSubCatCat.getObject(Constant.ALL_BRANDS_PREF, BaseCatSubCatBean.class);
-                   if (mBaseCatSubCatBean != null && !mBaseCatSubCatBean.getmBaseCatBeanArrayList().isEmpty()) {
+                   if (mnewsfeed.getBrands() != null && !mnewsfeed.getBrands().isEmpty()) {
                        isItemListAvail = true;
 
-                       Type typePopularBrandBeanArrayList = new TypeToken<ArrayList<PopularBrandBean>>() {
-                       }.getType();
-
-                       mBaseCatSubCatCat = ComplexPreferences.getComplexPreferences(getActivity(), Constant.POPULAR_BRANDS_PREF2, getActivity().MODE_PRIVATE);
-                       mPopularBrandBeenArrayList = mBaseCatSubCatCat.getArray(Constant.POPULAR_BRANDS_PREFOBJ2, typePopularBrandBeanArrayList);
-                       mBaseCatSubCatCat = ComplexPreferences.getComplexPreferences(getActivity(), Constant.POPULAR_BRANDS_PREF, getActivity().MODE_PRIVATE);
-                       // mPopularBrandBeenArrayList = mBaseCatSubCatCat.getArray(Constant.POPULAR_BRANDS_PREFOBJ, typePopularBrandBeanArrayList);
-                       if (mPopularBrandBeenArrayList != null && !mPopularBrandBeenArrayList.isEmpty())
-                           isPopularBrandItemListAvail = true;
-                       try {
-                           HomeFragPopularBrandAdapter mHomeFragRecyclerViewAdapter = new HomeFragPopularBrandAdapter(getActivity(), mBaseCatSubCatBean, rowIMageHeight, rowIMageWidth, getFragmentManager(), mRetailerBean, mPopularBrandBeenArrayList == null ? new ArrayList<PopularBrandBean>() : mPopularBrandBeenArrayList);
-                           mHomeFragRecyclerView2.setAdapter(mHomeFragRecyclerViewAdapter);
-                       } catch (IndexOutOfBoundsException e) {
-                           startActivity(new Intent(getActivity(), HomeActivity.class));
-                       } catch (Exception e) {
-                           startActivity(new Intent(getActivity(), HomeActivity.class));
-                       }
+                       BrandAdapter mbrandadapter = new BrandAdapter(getActivity(), rowIMageHeight, rowIMageWidth, getFragmentManager(),mnewsfeed.getBrands());
+                       mBrandRecycler.setAdapter(mbrandadapter);
+                       lerBrand.setVisibility(View.VISIBLE);
                    }
+
+
+
 
                    if (Utils.isInternetConnected(getActivity())) {
 
@@ -1121,17 +1131,24 @@ public class HomeFragment extends Fragment {
 
            }
 
+
+
+
+
            else {
                Toast.makeText(getActivity(), "Improper response from server", Toast.LENGTH_SHORT).show();
-               ComplexPreferences mBaseCatSubCatCat = ComplexPreferences.getComplexPreferences(getActivity(), Constant.POPULAR_BRANDS_PREF2, getActivity().MODE_PRIVATE);
-               mBaseCatSubCatCat.putObject(Constant.POPULAR_BRANDS_PREFOBJ2, mPopularBrandBeenArrayList);
+               ComplexPreferences mBaseCatSubCatCat = ComplexPreferences.getComplexPreferences(getActivity(), Constant.ALL_BRANDS_PREF, getActivity().MODE_PRIVATE);
+               mBaseCatSubCatCat.putObject(Constant.ALL_BRANDS_PREF, feedsList);
                mBaseCatSubCatCat.commit();
                mBaseCatSubCatCat.clear();
            }
-           if (mDialog.isShowing()) {
+
+
+   /*        if (mDialog.isShowing()) {
                animation.stop();
                mDialog.dismiss();
            }
+*/
 
 
 
@@ -1139,9 +1156,6 @@ public class HomeFragment extends Fragment {
 
 
 
-           BrandAdapter mbrandadapter = new BrandAdapter(getActivity(), rowIMageHeight, rowIMageWidth, getFragmentManager(),feedsList);
-           mBrandRecycler.setAdapter(mbrandadapter);
-           lerBrand.setVisibility(View.VISIBLE);
 
 
        }
