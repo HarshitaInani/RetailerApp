@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="com.google.firebase:firebase-appindexing-10.2.0">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/964eea8278472e4212d0871dd9d07a06f8e95164/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/964eea8278472e4212d0871dd9d07a06f8e95164/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -36,12 +36,14 @@ import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.Constant;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.HomeActivity;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.R;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.CartItemBean;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.CartItemInfo;
+import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.OfferList;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.bean.basecat_subcat_cat_bean_package.ItemList;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.customClasses.Utility;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.fragment.SubcatimageFragment;
@@ -65,6 +67,7 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
     ArrayAdapter<ItemList> myAdapter;
     String language;
     private TextView show_popup;
+    Offer  offer;
     int count = 0;
     FragmentManager fragmentManager;
     public ItemListAdapter(Context context, ArrayList<ItemList> itemListArrayList, int ivWidth, int ivHeight, TextView tvTotalItemPrice, TextView tvTotalItemQty, TextView tvTotalDp, TextView show_popup, ArrayList<ItemList> itemListAllvalue, FragmentManager fragmentManager) {
@@ -78,7 +81,18 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
         this.show_popup = show_popup;
         this.tvTotalItemQty = tvTotalItemQty;
         this.fragmentManager=fragmentManager;
+
     }
+
+  public  interface Offer
+    {
+        void Offerlist(ArrayList<ItemList> Offerlist);
+    }
+
+   public void OfferListner(Offer offer)
+   {
+       this.offer=offer;
+   }
 
     @Override
     public ItemListAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -117,9 +131,11 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
                 String companyId = itemListAllvalue.get(jj).getCompanyId();
                 String isoffer = itemListAllvalue.get(jj).getIsoffer();
                 String sisOffer;
-                if(isoffer.equalsIgnoreCase("true"))
-                {
-                    sisOffer="true";
+
+                if(isoffer!=null) {
+                    if (isoffer.equalsIgnoreCase("true")) {
+                        sisOffer = "true";
+                    }
                 }
                 moqPojoArrayList.add(new ItemList(ItemId, UnitId, Categoryid, SubCategoryId, SubsubCategoryid, itemname, UnitName, PurchaseUnitName, price, SellingUnitName, SellingSku, UnitPrice, VATTax, LogoUrl, MinOrderQty, Discount, TotalTaxPercentage, HindiName, DpPoint, PromoPoint, MarginPoint, warehouseId, companyId, ItemNumber,isoffer));
 
@@ -169,6 +185,8 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
 
         if (moqPojoArrayList.size() > 2) {
             viewHolder.ivOfferImage.setVisibility(View.VISIBLE);
+            Log.d("mayank1", "onBindViewHolder: "+moqPojoArrayList.size());
+         //   offer.Offerlist(moqPojoArrayList);
         }
         if(moqPojoArrayList.size()==1)
         {

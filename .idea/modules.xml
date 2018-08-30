@@ -6,7 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/code.iml" filepath="$PROJECT_DIR$/code.iml" />
       <module fileurl="file://$PROJECT_DIR$/pgtrupaylib-release/pgtrupaylib-release.iml" filepath="$PROJECT_DIR$/pgtrupaylib-release/pgtrupaylib-release.iml" />
-      <module fileurl="file://$PROJECT_DIR$/trupayminilib/trupayminilib.iml" filepath="$PROJECT_DIR$/trupayminilib/trupayminilib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/trupayminilib_release/trupayminilib_release.iml" filepath="$PROJECT_DIR$/trupayminilib_release/trupayminilib_release.iml" />
     </modules>
   </component>
 </project>

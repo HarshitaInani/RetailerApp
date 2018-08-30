@@ -603,6 +603,7 @@ public class HomeFragment extends Fragment {
 
 
 
+
 //Set adapter in recycleView if data is Comes From API
 
             if (mExeclusiveBrandsBeanList != null && !mExeclusiveBrandsBeanList.isEmpty()) {
@@ -699,15 +700,17 @@ public class HomeFragment extends Fragment {
 
             }
 
-            if (mnewsfeed.getBrands() != null && !mnewsfeed.getBrands().isEmpty()) {
-                isItemListAvail = true;
+            if(mnewsfeed !=null) {
 
-                BrandAdapter mbrandadapter = new BrandAdapter(getActivity(), rowIMageHeight, rowIMageWidth, getFragmentManager(),mnewsfeed.getBrands());
-                mBrandRecycler.setAdapter(mbrandadapter);
-                lerBrand.setVisibility(View.VISIBLE);
+                if (mnewsfeed.getBrands() != null && !mnewsfeed.getBrands().isEmpty()) {
+                    isItemListAvail = true;
+
+                    BrandAdapter mbrandadapter = new BrandAdapter(getActivity(), rowIMageHeight, rowIMageWidth, getFragmentManager(), mnewsfeed.getBrands());
+                    mBrandRecycler.setAdapter(mbrandadapter);
+                    lerBrand.setVisibility(View.VISIBLE);
+                }
+
             }
-
-
 
 
 

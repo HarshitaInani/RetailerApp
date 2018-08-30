@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="code:trupayminilib_release">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/14030e9cfc35d2b4a9487c2e03a20428a0029875/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/14030e9cfc35d2b4a9487c2e03a20428a0029875/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

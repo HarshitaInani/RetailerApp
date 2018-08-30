@@ -11,7 +11,7 @@
             <option value="$PROJECT_DIR$/AmitLibs" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/pgtrupaylib-release" />
-            <option value="$PROJECT_DIR$/trupayminilib" />
+            <option value="$PROJECT_DIR$/trupayminilib_release" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
