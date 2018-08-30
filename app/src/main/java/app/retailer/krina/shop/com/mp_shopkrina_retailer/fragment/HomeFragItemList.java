@@ -41,6 +41,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.CartActivity;
 import app.retailer.krina.shop.com.mp_shopkrina_retailer.Constant;
@@ -68,7 +69,7 @@ import static android.content.Context.MODE_PRIVATE;
  * Created by Krishna on 03-01-2017.
  */
 
-public class HomeFragItemList extends Fragment implements ItemListSubSubCatAdapterInterface, ItemListSubCatAdapterInterface {
+public class HomeFragItemList extends Fragment implements ItemListSubSubCatAdapterInterface, ItemListSubCatAdapterInterface,ItemListAdapter.Offer {
     int selectedCategoryId = -1;
     int selectedWarId = -1;
 
@@ -90,6 +91,7 @@ public class HomeFragItemList extends Fragment implements ItemListSubSubCatAdapt
     TextView tvTotalDp;
     boolean showDialog = true;
     ArrayList<ItemList> mItemListArrayList = new ArrayList<>();
+   ArrayList<ItemList> mItemListOfOfferArrayList=new ArrayList<>();
     ArrayList<ItemList> mItemListAllValue= new ArrayList<>();
     ItemListAdapter mItemListAdapter;
     int mp = 0, pp = 0;
@@ -99,7 +101,7 @@ public class HomeFragItemList extends Fragment implements ItemListSubSubCatAdapt
     int xPoints = 2;
     ImageView imageView;
     TextView show_popup;
-    ImageView image_ads;
+    ImageView image_filter;
     RelativeLayout rl1;
     ViewPager viewPager;
     CirclePageIndicator circlePageIndicator;
@@ -135,6 +137,25 @@ public class HomeFragItemList extends Fragment implements ItemListSubSubCatAdapt
         tvTotalDp = (TextView)view.findViewById(R.id.item_list_total_dp_tv);
      //   Toolbar myToolbar = (Toolbar) view.findViewById(R.id.toolbar);
       //  CollapsingToolbarLayout ctl = (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
+        image_filter=(ImageView)view.findViewById(R.id.filter);
+
+        image_filter.setOnClickListener(new View.OnClickListener() {
+           @Override
+         public void onClick(View v) {
+
+               //    mItemListAdapter = new ItemListAdapter(getContext(), mItemListOfOfferArrayList, 77, 77, tvTotalItemPrice, tvTotalItemQty , tvTotalDp, show_popup,mItemListAllValue, getFragmentManager());
+               //    mItemListRecyclerView.setAdapter(mItemListAdapter);
+
+               mItemListAdapter = new ItemListAdapter(getContext(), mItemListOfOfferArrayList, 77, 77, tvTotalItemPrice, tvTotalItemQty, tvTotalDp, show_popup, mItemListAllValue, getFragmentManager());
+               mItemListAdapter.OfferListner(HomeFragItemList.this);
+               mItemListRecyclerView.setAdapter(mItemListAdapter);
+
+               Log.d("mayank", "onClick: " + mItemListOfOfferArrayList.size());
+           }
+
+
+      });
+
 
 
         show_popup=(TextView)view.findViewById(R.id.show_popup);
@@ -169,6 +190,7 @@ public class HomeFragItemList extends Fragment implements ItemListSubSubCatAdapt
         });
 
         mItemListAdapter = new ItemListAdapter(getContext(), mItemListArrayList, 77, 77, tvTotalItemPrice, tvTotalItemQty , tvTotalDp, show_popup,mItemListAllValue, getFragmentManager());
+        mItemListAdapter.OfferListner(this);
         mItemListRecyclerView.setAdapter(mItemListAdapter);
 
         viewPager =(ViewPager)view.findViewById(R.id.pager);
@@ -320,6 +342,13 @@ public class HomeFragItemList extends Fragment implements ItemListSubSubCatAdapt
         mItemListAsyncTask = new FilterItemsAsyncTask().execute(selecctedSuSubCatId);
     }
 
+    @Override
+    public void Offerlist(ArrayList<ItemList> Offerlist) {
+
+        mItemListOfOfferArrayList.addAll(Offerlist);
+
+    }
+
     public class FilterSubSubCatAsyncTask extends AsyncTask<String, Void, ArrayList<SubSubCategoriesBean>> {
         /*Dialog mDialog;
 
@@ -427,6 +456,11 @@ public class HomeFragItemList extends Fragment implements ItemListSubSubCatAdapt
                 System.out.println("SecondSubcategoryID::"+params[0]);
                 if (mTempItemListArrayList.get(i).getSubsubCategoryid().equalsIgnoreCase(params[0])) {
                     mItemListArrayList.add(mTempItemListArrayList.get(i));
+                    if(mTempItemListArrayList.get(i).getIsoffer().equalsIgnoreCase("true"))
+                    {
+
+                        mItemListOfOfferArrayList.add(mTempItemListArrayList.get(i));
+                    }
                     if (mDialog.isShowing()) {
                         animation.stop();
                         mDialog.dismiss();
@@ -622,6 +656,7 @@ public class HomeFragItemList extends Fragment implements ItemListSubSubCatAdapt
                                 String TotalTaxPercentage = isNullOrEmpty(mItemsJsonArray.getJSONObject(i), "TotalTaxPercentage");
                                 String ItemNumber = isNullOrEmpty(mItemsJsonArray.getJSONObject(i), "ItemNumber");
                                 String Isoffer = isNullOrEmpty(mItemsJsonArray.getJSONObject(i), "Isoffer");
+                                Log.d("mayank", "callback: "+Isoffer);
                                 String DpPoint = "";
 
                                 String PromoPoint = isNullOrEmpty(mItemsJsonArray.getJSONObject(i), "promoPerItems");

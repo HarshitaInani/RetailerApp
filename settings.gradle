@@ -1,1 +1,1 @@
-include ':app', ':AmitLibs', ':pgtrupaylib-release', ':trupayminilib'
+include ':app', ':AmitLibs', ':pgtrupaylib-release', ':trupayminilib_release'
