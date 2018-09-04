@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+   <item
+        android:id="@+id/action_my_orders"
+        android:title="My Orders"
+        android:icon="@drawable/ic_add_shopping_cart"
+        />
+  <item
+        android:icon="@drawable/ic_card_giftcard"
+        android:id="@+id/action_my_wallet"
+        android:title="My Wallet"
+        />
+    <item
+        android:icon="@drawable/ic_card_giftcard"
+        android:id="@+id/action_my_gullak"
+        android:title="My Gullak"
+        />
+  <item
+        android:icon="@drawable/ic_perm_identity"
+        android:id="@+id/action_my_profile"
+        android:title="My Profile"
+
+        />
+  <!--  <item
+
+        android:icon="@drawable/ic_perm_identity"
+
+        android:id="@+id/action_my_dial"
+        android:title="My Dial"
+
+        />-->
+
+    <item
+        android:icon="@drawable/ic_local_grocery_store"
+        android:id="@+id/action_my_cart"
+        android:title="My Cart"
+
+        />
+    <item
+        android:id="@+id/action_request_item"
+        android:title="Request Brand"
+        android:icon="@drawable/ic_touch_app"
+
+        />
+
+
+    <item
+        android:icon="@drawable/ic_import_export"
+        android:id="@+id/action_feedback"
+        android:title="Feedback"
+
+        />
+    <item
+        android:id="@+id/action_milestone"
+        android:title="Milestone point"
+        android:icon="@drawable/ic_sort"
+        />
+  <item
+        android:icon="@drawable/ic_filter_vintage"
+        android:id="@+id/action_my_rewards"
+        android:title="My Dream"
+
+        />
+   <item
+        android:icon="@drawable/ic_favorite_menu"
+        android:id="@+id/action_my_fav"
+        android:title="My Favorite"
+
+        />
+    <item
+        android:icon="@drawable/ic_settings"
+        android:id="@+id/action_my_setting"
+        android:title="My Setting"
+        />
+    <item
+        android:icon="@drawable/ic_repeat"
+        android:id="@+id/action_request_service"
+        android:title="Request Service"
+        />
+  <item
+        android:id="@+id/action_mynews"
+        android:title="My News"
+        android:icon="@drawable/ic_satellite"
+
+        />
+  <item
+        android:id="@+id/action_contact_us"
+        android:title="Contact us"
+        android:icon="@drawable/ic_contact_phone"/>
+   <!--  <item
+        android:id="@+id/action_activities"
+        android:title="Activities"
+        android:icon="@drawable/ic_contact_phone"
+        />-->
+
+
+    <item
+        android:icon="@drawable/ic_power_settings_new"
+        android:id="@+id/action_logout"
+        android:title="Logout"
+        />
+
+</menu>
